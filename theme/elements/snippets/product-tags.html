@@ -1,0 +1,99 @@
+{% if settings.show_product_tag_on_listing or settings.show_product_tags or settings.show_double_tag %} 
+    {% set discount = product.price_offer > 0 ? (100 - (product.price_offer / product.price) * 100) : false %} 
+    {% set position = 0 %}
+    {% set tags_count = 0 %}
+
+    {% if product.new %} 
+        {% set tags_count = tags_count + 1 %}
+    {% endif %} 
+    {% if product.featured %} 
+        {% set tags_count = tags_count + 1 %} 
+    {% endif %} 
+    {% if product.free_shipping %}
+        {% set tags_count = tags_count + 1 %} 
+    {% endif %} 
+    {% if product.additional_button %} 
+        {% set tags_count = tags_count + 1 %} 
+    {% endif %} 
+    {% if product.ProgressiveDiscounts %} 
+        {% set tags_count = tags_count + 1 %} 
+    {% endif %}     
+        
+    {% set show_double_tag = settings.show_double_tag %} 
+    {% if show_double_tag == 0 %} 
+        {% set v_width = '247' %}
+    {% else %} 
+        {% set v_width = '121' %}
+        {% if tags_count % 2 != 0 %} 
+            {% set odd_amount = true %} 
+        {% endif %}     
+    {% endif %} 
+    
+
+    {% if discount %}
+        <div class="tag-floating tag-percentageDiscount">
+            -{{ discount| number_format }}%
+        </div>
+    {% endif %} 
+
+    {% if product.new or product.featured or product.free_shipping or product.additional_button or product.ProgressiveDiscounts %}
+
+    <div class="product-tag" data-tags-count="{{ tags_count }}" data-name="product-tags">
+        {% set replaceTags = {'src=': 'width="' ~ v_width ~ '" height="26" alt="Selo do produto" src='} %} 
+        <div class="product-tags-quant-{{ tags_count }}">
+        {% if product.new or Image('new') %}
+            {% set position = position + 1 %}
+            {% if settings.show_product_tags %}
+                <div class="box-tag_lancamento">
+                    <span class="tag_lancamentos">Lançamentos</span>
+                </div>
+            {% elseif settings.show_product_tag_on_listing or settings.show_double_tag %}
+                <div class="tag-new tag{{ show_double_tag == 0 ? ' tag--full' }}{{show_double_tag == 1 and (odd_amount and position == tags_count) ? ' tag--center' }}">
+                    {{ Image('new') | replace(replaceTags) }}
+                </div>
+            {%endif %}
+
+        {% endif %} 
+        {% if product.featured or Image('featured') %}
+            {% set position = position + 1 %}
+            {% if settings.show_product_tags %}
+                <div class="box-tag_destaque">
+                    <span class="tag_destaque">Destaque</span>
+                </div>
+            {% elseif settings.show_product_tag_on_listing or settings.show_double_tag %}            
+                <div class="tag-featured tag{{ show_double_tag == 0 ? ' tag--full' }}{{show_double_tag == 1 and (odd_amount and position == tags_count) ? ' tag--center' }}">
+                    {{ Image('featured') | replace(replaceTags) }}
+                </div>
+            {% endif %}    
+        {% endif %} 
+{#         {% if product.free_shipping or Image('free_shipping') %}
+            {% set position = position + 1 %}
+            {% if settings.show_product_tags %}
+                <div class="box-tag_frete">
+                    <span class="tag tag_frete">Frete Grátis</span>
+                </div>
+            {% elseif settings.show_product_tag_on_listing or settings.show_double_tag %}  
+                <div class="tag-freeShipping tag{{ show_double_tag == 0 ? ' tag--full' }}{{show_double_tag == 1 and (odd_amount and position == tags_count) ? ' tag--center' }}">
+                    {{ Image('free_shipping') | replace(replaceTags) }}
+                </div>
+            {% endif %}    
+        {% endif %}  #}
+        {% if settings.txt_selo_adicional  %}
+            {% if product.additional_button %}
+                {% set position = position + 1 %}
+                <div class="tag-extra tag{{ show_double_tag == 0 ? ' tag--full' }}{{show_double_tag == 1 and (odd_amount and position == tags_count) ? ' tag--center' }}">
+                {{ settings.txt_selo_adicional }}
+                </div>
+            {% endif %} 
+        {% endif %} 
+        {% if product.ProgressiveDiscounts %} 
+            {% set position = position + 1 %}
+            {% set discount = product.ProgressiveDiscounts | last %}
+            <div class="tag-progressiveDiscount tag{{ show_double_tag == 0 ? ' tag--full' }}{{show_double_tag == 1 and (odd_amount and position == tags_count) ? ' tag--center' }}" title="Produto com desconto progressivo">
+                <span class="progressiveDiscount">{{ discount.tag }}</span>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+    {% endif %} 
+{% endif %}

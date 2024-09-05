@@ -1,0 +1,88 @@
+
+.regua-wrapper{
+    width: 100%;
+    background-color: var(--c_side_regua_topo_bg);
+
+    .regua-container{
+        background-color: var(--c_regua_topo_bg);
+        max-width: 1520px;
+        height: 36px;
+        border-radius: 0px 0px 10px 10px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    
+        .regua-text-container{
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            @include small{
+                justify-content: flex-start;
+            }
+            .regua-text{
+                color: var(--c_regua_topo_text, white);
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+        
+                &-img{
+                    //width: 49px;
+                    //height: 17px;
+                    width: 100%;
+                    height: 100%;
+                    max-width: 16px;
+                    max-height: 16px;
+    
+                    &.icon{
+                        //width: 16px;
+                        //height: 12px;
+                        width: 100%;
+                        height: 100%;
+                        max-width: 16px;
+                        max-height: 16px;
+                        flex-shrink: 0;
+                    }
+                }
+            }
+        }
+    
+        .swiper-button-prev, .swiper-button-next{
+            display: none;
+        }
+        .swiper-button-prev::after, .swiper-button-next::after{
+            font-size: 22px;
+            color: var(--c_regua_topo_arrows);
+        }
+    }
+}
+
+@media (max-width: 999px){
+    .regua-wrapper{
+        .regua-container{
+            .swiper-button-prev.btnPrev, .swiper-button-next.btnNext{
+                display: block;
+                top: 78%;
+
+            }
+            .swiper-button-prev:focus, .swiper-button-next:focus {
+                outline: none !important;
+            }
+            .swiper-button-prev{
+                left: 2%;
+            }
+            .swiper-button-next{
+                right: -2%;
+            }
+            .swiper-button-prev::after, .swiper-button-next::after{
+                font-size: 16px;
+            }
+        }
+
+    }
+}

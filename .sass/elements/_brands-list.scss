@@ -1,0 +1,23 @@
+.brands {
+    &-list {
+        @extend %flex-betw-center;
+        @include fontInsert(1.5, 500, var(--c_general_text2));
+        cursor: grab;
+    }
+
+    &-item {
+        @extend %flex-center-center;
+        min-height: 10rem;
+    }
+
+    &-title {
+        line-height: 0.9;
+        word-break: break-word;
+        width: 100%;
+    }
+
+    .icon-tag {
+        @extend %flex-center-center;
+        margin-right: 0.6rem;
+    }
+}

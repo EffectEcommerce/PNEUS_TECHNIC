@@ -1,0 +1,104 @@
+{% set more_quantity = settings.qnt_category | number_format | default(7) %} 
+
+{% if settings.show_more_categories and categories | length > more_quantity %} 
+    {% set show_categories = categories | slice(0, more_quantity) %} 
+    {% set more_categories = categories | slice(more_quantity) %} 
+{% else %} 
+    {% set show_categories = categories %} 
+    {% set more_categories = null %}
+{% endif %}
+
+<div class="menu-container nav" data-name="menu">
+    <ul class="list menu-list {% if categories | length > 4 %} justify-between {% else %} justify-center {% endif %}"
+        role="menubar"
+        data-menuBarAcessible
+    >
+        {% for category in categories %}
+            <li class="menu-firstLevel {{ category.children ? 'subList' }}" role="none">
+                
+                <a  
+                    class="menu-link"
+                    href="{{ category.link }}"
+                    title="{{ category.name }}"
+                    role="menuitem"
+                    {% if category.children %}
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    {% endif %}
+                    tabindex="0"
+                >
+                    {{ category.name }}
+                </a>
+
+                {% if category.children  %}
+                    <div class="menu-secondLevel menu-subList product-sub">
+                        
+                        <ul class="sub-list second-level">
+                            {% for level2 in category.children %}
+                                <li class="secondLevel-item {{ level2.children ? 'subList-group' }}" role="none">
+                                    
+                                    <a  class="menu-link" role="menuitem" href="{{ level2.link }}" title="{{ level2.name }}">
+                                        {{ level2.name }}
+                                    </a>
+
+                                    {% if level2.children %}
+                                    <ul class="menu-thirdLevel menu-subList" role="menu">
+                                        {% for level3 in level2.children %}
+                                            <li role="none">
+                                                <a class="menu-link" role="menuitem" href="{{ level3.link }}" title="{{ level3.name }}">
+                                                    {{ level3.name }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %} 
+
+                                </li>
+                            {% endfor %}   
+                        </ul>   
+
+                        {% element 'snippets/product_category' {"id": category.id } %}
+
+                    </div>         
+                {% endif %}
+
+            </li>
+        {% endfor %}
+
+        {% if settings.show_menu_blog %}
+
+            {% for custom in pages.custom %}
+                {% if custom.name == "Notícias" %}
+                    <li class="menu-firstLevel" role="none">
+                        <a class="menu-link" href="{{ settings.blog_menu_link ? settings.blog_menu_link : custom.url }}">Blog</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            
+        {% endif %}
+
+        {% if more_categories %}
+            <li class="menu-firstLevel" role="none">
+                <button
+                    class="menu-expand"
+                    title="Departamentos"
+                    role="menuitem"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                >
+                    + Categorias
+                </button>
+
+                <ul class="menu-secondLevel menu-subList">
+                    {% for category in more_categories %}
+                        <li class="secondLevel-item subList-group">
+                            <a class="menu-link" role="menuitem" href="{{ category.link }}" title="{{ category.name }}">
+                                {{ category.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endif %}
+    </ul>
+</div>   

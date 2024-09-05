@@ -1,0 +1,85 @@
+.box-alerts {
+    @include fontInsert(1, 700, #fff);
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    left: 0;
+    z-index: 9;
+    right: 0;
+    background: $c_alert;
+    text-align: center;
+
+    &:empty {
+        display: none;
+    }
+
+    .danger {
+        line-height: 1.2;
+
+        @include small {
+            padding: 0 2rem;
+        }
+        @include medium {
+            padding: 0 2rem;
+        }
+    }
+}
+
+#alert-show {
+    display: none;
+
+    &:checked ~ .box-alerts {
+        display: none;
+    }
+
+    + .infobox.danger,
+    + .box-alerts {
+        display: none;
+    }
+}
+
+.close-info {
+    display: block;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    transform: rotate(45deg);
+    margin: auto;
+    height: 14px;
+    width: 14px;
+    @include small {
+        right: 1rem;
+    }
+    @include medium {
+        right: 1rem;
+    }
+    @include large {
+        right: 4rem;
+    }
+
+    &:first-child {
+        display: none;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        height: 14px;
+        width: 2px;
+        background: #fff;
+        position: absolute;
+        left: 6px;
+    }
+
+    &:before {
+        content: '';
+        display: block;
+        width: 14px;
+        height: 2px;
+        background: #fff;
+        position: absolute;
+        top: 6px;
+    }
+}

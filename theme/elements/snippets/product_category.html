@@ -1,0 +1,15 @@
+{% set productCategory = Products({
+    'filter': ['available'],
+    'limit': 1,
+    'categories': [id]
+}) %}
+
+{% if productCategory %}     
+    <div class="col-product">
+        {% for item in productCategory %} 
+            {% element 'snippets/product' { 
+                "product": item
+            } %}
+        {% endfor %}
+    </div>
+{% endif %}

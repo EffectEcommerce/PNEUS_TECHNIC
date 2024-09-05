@@ -1,0 +1,23 @@
+{% if banners.extra10 %}
+    <div class="container-banner-unico" data-name="banner-unico">
+        <div class="container-images">
+            {% if not utils.is_mobile %}
+                {% if banners.extra10.link %}
+                    <a class="banner-unico-link" title="Link banner único" href="{{ banners.extra10.link }}" target="{{ banners.extra10.target }}">
+                        <img class="banner-unico-image" src="{{ banners.extra10.src }}" alt="{{ banners.extra10.img_alt ? banners.extra10.img_alt : 'Banner sessão banner único' }}" width="{{ banners.extra10.width }}" height="{{ banners.extra10.height }}">
+                    </a>
+                {% else %}
+                    <img class="banner-unico-image" src="{{ banners.extra10.src }}" alt="{{ banners.extra10.img_alt ? banners.extra10.img_alt : 'Banner sessão banner único' }}" width="{{ banners.extra10.width }}" height="{{ banners.extra10.height }}">
+                {% endif %}
+            {% else %}
+                {% if banners.extra11.link %}
+                    <a class="banner-unico-link" title="Link banner único" href="{{ banners.extra11.link }}" target="{{ banners.extra11.target }}">
+                        <img class="banner-unico-image" src="{{ banners.extra11.src }}" alt="{{ banners.extra11.img_alt ? banners.extra11.img_alt : 'Banner sessão banner único' }}" width="{{ banners.extra11.width }}" height="{{ banners.extra11.height }}">
+                    </a>
+                {% else %}
+                    <img class="banner-unico-image" src="{{ banners.extra11.src }}" alt="{{ banners.extra11.img_alt ? banners.extra11.img_alt : 'Banner sessão banner único' }}" width="{{ banners.extra11.width }}" height="{{ banners.extra11.height }}">
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

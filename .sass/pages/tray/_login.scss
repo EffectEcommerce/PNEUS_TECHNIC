@@ -1,0 +1,146 @@
+.page-login {
+    .titulo-login {
+        display: none;
+    }
+
+    .carrinho-heading {
+        display: none;
+    }
+
+    .default-content {
+        .container {
+            .container3 + .container {
+                padding: 0;
+            }
+        }
+
+        .board {
+            @extend %flex;
+
+            @include small {
+                flex-direction: column;
+                margin-top: 2rem;
+            }
+            @include medium {
+                margin-top: 2rem;
+            }
+            @include large {
+                margin-top: 2rem;
+            }
+        }
+    }
+
+    .caixa-login,
+    .caixa-cadastro {
+        width: 100%;
+
+        @include small {
+            max-width: 100%;
+        }
+
+        h3 {
+            @include title-h3;
+
+            @include small {
+                text-align: center;
+            }
+        }
+
+        fieldset {
+            @include fontInsert(1, 400, var(--c_general_text2));
+            border: 0;
+            padding: 0;
+
+            @include small {
+                font-size: 0.9rem;
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+
+            @include medium {
+                margin-top: 1.3rem;
+            }
+            @include large {
+                margin-top: 1.3rem;
+            }
+
+            .botao-commerce {
+                @extend .button2;
+                opacity: 1;
+                transition: $transit_default;
+
+                @include small {
+                    width: 100%;
+                }
+                @include medium {
+                    width: unset;
+                }
+                @include large {
+                    width: unset;
+                }
+
+                &:hover,
+                &:focus,
+                &:active {
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+
+    .caixa-login {
+        @include small {
+            border-bottom: 6px solid var(--c_general_details);
+            padding-bottom: 4rem;
+        }
+        @include medium {
+            border-right: 6px solid var(--c_general_details);
+            padding: 0 4.5rem 0 2rem;
+        }
+        @include large {
+            border-right: 6px solid var(--c_general_details);
+            padding: 0 4.5rem 0 0;
+        }
+    }
+
+    .caixa-cadastro {
+        @include small {
+            padding-top: 4rem;
+        }
+        @include medium {
+            padding: 0 2rem 0 4.5rem;
+        }
+        @include large {
+            padding: 0 0 0 4.5rem;
+        }
+
+        p:first-child {
+            display: block;
+            margin-bottom: 1.1rem;
+            width: 100%;
+        }
+
+        fieldset {
+            label {
+                font-size: 0;
+            }
+
+            input {
+                @include fontInsert(0.875, 400, var(--c_general_text1));
+                background: var(--c_general_details);
+                border: 1px solid var(--c_general_details);
+                border-radius: 2px;
+                display: block;
+                line-height: 1.4;
+                padding: 0 1.25rem;
+                text-align: left;
+                height: 52px;
+                width: calc(100% - 2.5rem);
+            }
+
+            .botao-novo-cadastro {
+                margin-top: 1.875rem;
+            }
+        }
+    }
+}

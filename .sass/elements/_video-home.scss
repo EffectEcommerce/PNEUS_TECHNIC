@@ -1,0 +1,19 @@
+.video-wrapper-layout {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1520px;
+
+    .youtube-video-layout {
+
+    width: 100%;
+    max-width: 1160px;
+    height: 600px;
+    }
+}
+@media (max-width:600px){
+    .video-wrapper-layout .youtube-video-layout{
+        height:240px;
+    }
+}

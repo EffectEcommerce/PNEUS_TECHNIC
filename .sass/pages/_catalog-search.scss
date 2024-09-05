@@ -1,0 +1,213 @@
+.catalog {
+    @extend %flex;
+    flex-wrap: wrap;
+
+    &-filter {
+        transition: 0.2s ease-out transform;
+
+        @include small {
+            opacity: 0;
+            visibility: hidden;
+            width: 0;
+            height: 0;
+            transform: translateY(calc(-100% - 10px));
+        }
+        @include medium {
+            display: block;
+            width: $v_width_filter;
+        }
+        @include large {
+            display: block;
+            width: $v_width_filter;
+        }
+
+        &.u-show {
+            @extend %modal-mobile-menus;
+            //max-width: unset;
+            //opacity: 1;
+            //overflow: scroll;
+            //transform: translateY(0);
+            //visibility: visible;
+            opacity: 1;
+            overflow: scroll;
+            transform: translateY(0);
+            visibility: visible;
+            max-width: 330px;
+            max-height: 600px;
+            align-self: center;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 10px;
+
+            .filter {
+                padding: 0;
+            }
+
+            .filter-header.u-mobile {
+                @extend %flex-betw-center;
+                @extend %title-menu-modal;
+                padding: 1.9rem 1rem 1.3rem 1rem;
+                position: sticky;
+                top: 0;
+                background-color: var(--c_general_inverted);
+                z-index: 9;
+                color: #000;
+
+                .filter-close {
+                    .icon-exit::before {
+                        color: var(--c_general_text1);
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+
+            .filter-content {
+                padding: 0 1rem;
+            }
+        }
+    }
+
+    &-title {
+        @include title-h1;
+    }
+
+    &-description {
+        @extend %paragraph-text;
+        border-bottom: $v_border_sections;
+        padding: 0 0;
+    }
+
+    &-section {
+        .catalog-title {
+            margin: 0 0 20px 0;
+        }
+
+        .banner-container {
+            margin: 0;
+        }
+
+        @include small {
+            width: 100%;
+        }
+        @include medium {
+            width: calc(100% - #{$v_width_filter});
+        }
+        @include large {
+            width: calc(100% - #{$v_width_filter});
+        }
+    }
+
+    &-listRefinement {
+        margin: 1rem 0 2.5rem 0;
+        @extend %flex-betw-center;
+        @include small {
+            flex-direction: column;
+        }
+        @include medium {
+            flex-direction: column;
+        }
+        @include large {
+            flex-direction: row;
+        }
+
+        .results {
+            width: auto;
+        }
+
+        .listFilter {
+            @include small {
+                padding-top: 0rem;
+            }
+            @include medium {
+                padding-top: 1.5rem;
+            }
+            @include large {
+                padding-top: 0;
+            }
+
+            label.filtros:last-child {
+                display: none;
+            }
+
+            .filtro-ordem {
+                @include fontInsert(0.95, 600, var(--c_general_text1));
+                @include small{
+                    font-size: 0;
+                }
+
+                .select {
+                    @include fontInsert(0.95, 400, var(--c_general_text2));
+                    background-color: var(--c_general_inverted);
+                    border: 1px solid var(--c_general_details);
+                    border-radius: 2px;
+                    padding: 0.5rem 1rem;
+                }
+            }
+        }
+
+        .filter-button {
+            @include small {
+                width: 100%;
+                padding: .675rem 0;
+            }
+            @include medium {
+                margin-top: 0;
+                width: unset;
+            }
+            @include large {
+                margin-top: 0;
+                width: unset;
+            }
+
+            &.u-mobile {
+                @include small {
+                    display: block;
+                }
+
+                @include medium {
+                    display: none;
+                }
+
+                @include large {
+                    display: none;
+                }
+            }
+        }
+        .compare-button {
+            @include small {
+                margin-top: 1.5rem;
+                width: 100%;
+            }
+            @include medium {
+                margin-top: 1.5rem;
+                width: unset;
+            }
+            @include large {
+                margin-top: 0;
+                width: unset;
+            }
+        }
+    }
+
+    &-list.listProduct-item {
+        @include small {
+            width: calc(100% / 2);
+        }
+
+        @include medium {
+            width: calc(100% / 2);
+        }
+
+        @include large {
+            width: calc(100% / 3);
+        }
+    }
+
+    &-empty {
+        @include fontInsert(1.5, 700);
+        padding: 2.5rem 0;
+        text-align: center;
+    }
+}

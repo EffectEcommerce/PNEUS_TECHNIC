@@ -1,0 +1,111 @@
+{# 
+{% if banners.extra2 and banners.extra3 and banners.extra4 and banners.extra5 %}
+    <div class="cat-vitrine-product-container">
+        <div class="cat-vitrine-product">
+            <div class="categoria-container-img">
+                {% if banners.extra2.link %}
+                <a href="{{ banners.extra2.link }}" target="{{ banners.extra2.target }}">
+                    <img src="{{ banners.extra2.src }}" alt="{{ banners.extra2.img_alt}}">
+                </a>
+                {% else %}
+                    <img src="{{ banners.extra2.src }}" alt="{{ banners.extra2.img_alt}}">
+                {% endif %}
+            </div>
+        </div>
+        <div class="cat-vitrine-product">
+            <div class="categoria-container-img">
+                {% if banners.extra3.link %}
+                    <a href="{{ banners.extra3.link }}" target="{{ banners.extra3.target }}">
+                        <img src="{{ banners.extra3.src }}" alt="{{ banners.extra3.img_alt}}">
+                    </a>
+                {% else %}
+                    <img src="{{ banners.extra3.src }}" alt="{{ banners.extra3.img_alt}}">
+                {% endif %}
+            </div>
+        </div>
+        <div class="cat-vitrine-product">
+            <div class="categoria-container-img">
+                {% if banners.extra4.link %}
+                    <a href="{{ banners.extra4.link }}" target="{{ banners.extra4.target }}">
+                        <img src="{{ banners.extra4.src }}" alt="{{ banners.extra4.img_alt}}">
+                    </a>
+                {% else %}
+                    <img src="{{ banners.extra4.src }}" alt="{{ banners.extra4.img_alt}}">
+                {% endif %}
+            </div>
+        </div>
+        <div class="cat-vitrine-product">
+            <div class="categoria-container-img">
+                {% if banners.extra5.link %}
+                    <a href="{{ banners.extra5.link }}" target="{{ banners.extra5.target }}">
+                        <img src="{{ banners.extra5.src }}" alt="{{ banners.extra5.img_alt}}">
+                    </a>
+                {% else %}
+                    <img src="{{ banners.extra5.src }}" alt="{{ banners.extra5.img_alt}}">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+#}
+
+{% set bannersList = [] %}
+    {% for slide in banners.extra2.slides %}
+        {% set slideLink = slide.link %}
+        {% set slideTarget = slide.target %}
+        {% set slideImage = slide.image %}
+        {% set slideLabel = slide.label %}
+        {% set slideHeight = slide.height %}
+        {% set slideWidth = slide.width %}
+        
+        {% set bannersList = bannersList | merge([{"slide_link": slideLink, "slide_target": slideTarget, "slide_image": slideImage, "slide_label": slideLabel, "slide_height": slideHeight, "slide_width": slideWidth }]) %}
+    {% endfor %} 
+
+{% if banners.extra2 %}
+    <div class="cat-vitrine-product-container">
+        <div class="cat-vitrine-product">
+            <div class="categoria-container-img" data-position-banner="EXTRA 2 FASE 1">
+                {% if bannersList[0].slide_link %}
+                    <a title="Top-categorias-link" href="{{ bannersList[0].slide_link }}" target="{{ bannersList[0].slide_target }}">
+                        <img src="{{ bannersList[0].slide_image }}" alt="{{ bannersList[0].slide_label ? bannersList[0].slide_label : 'Banners da sessão top categorias'}}" width="{{ bannersList[0].slide_width }}" height="{{ bannersList[0].slide_height }}" loading="lazy">
+                    </a>
+                {% else %}
+                    <img src="{{ bannersList[0].slide_image }}" alt="{{ bannersList[0].slide_label ? bannersList[0].slide_label : 'Banners da sessão top categorias'}}" width="{{ bannersList[0].slide_width }}" height="{{ bannersList[0].slide_height }}" loading="lazy">
+                {% endif %}
+            </div>
+        </div>
+        <div class="cat-vitrine-product">
+            <div class="categoria-container-img" data-position-banner="EXTRA 2 FASE 2">
+                {% if bannersList[1].slide_link %}
+                    <a title="Top-categorias-link" href="{{ bannersList[1].slide_link }}" target="{{ bannersList[1].slide_target }}">
+                        <img src="{{ bannersList[1].slide_image }}" alt="{{ bannersList[1].slide_label ? bannersList[1].slide_label : 'Banners da sessão top categorias'}}" width="{{ bannersList[1].slide_width }}" height="{{ bannersList[1].slide_height }}" loading="lazy">
+                    </a>
+                {% else %}
+                    <img src="{{ bannersList[1].slide_image }}" alt="{{ bannersList[1].slide_label ? bannersList[1].slide_label : 'Banners da sessão top categorias'}}" width="{{ bannersList[1].slide_width }}" height="{{ bannersList[1].slide_height }}" loading="lazy">
+                {% endif %}
+            </div>
+        </div>
+        <div class="cat-vitrine-product">
+            <div class="categoria-container-img" data-position-banner="EXTRA 2 FASE 3">
+                {% if bannersList[2].slide_link %}
+                    <a title="Top-categorias-link" href="{{ bannersList[2].slide_link }}" target="{{ bannersList[2].slide_target }}">
+                        <img src="{{ bannersList[2].slide_image }}" alt="{{ bannersList[2].slide_label ? bannersList[2].slide_label : 'Banners da sessão top categorias'}}" width="{{ bannersList[2].slide_width }}" height="{{ bannersList[2].slide_height }}" loading="lazy">
+                    </a>
+                {% else %}
+                    <img src="{{ bannersList[2].slide_image }}" alt="{{ bannersList[2].slide_label ? bannersList[2].slide_label : 'Banners da sessão top categorias'}}" width="{{ bannersList[2].slide_width }}" height="{{ bannersList[2].slide_height }}" loading="lazy">
+                {% endif %}
+            </div>
+        </div>
+        <div class="cat-vitrine-product">
+            <div class="categoria-container-img" data-position-banner="EXTRA 2 FASE 4">
+                {% if bannersList[3].slide_link %}
+                    <a title="Top-categorias-link" href="{{ bannersList[3].slide_link }}" target="{{ bannersList[3].slide_target }}">
+                        <img src="{{ bannersList[3].slide_image }}" alt="{{ bannersList[3].slide_label ? bannersList[3].slide_label : 'Banners da sessão top categorias'}}" width="{{ bannersList[3].slide_width }}" height="{{ bannersList[3].slide_height }}" loading="lazy">
+                    </a>
+                {% else %}
+                    <img src="{{ bannersList[3].slide_image }}" alt="{{ bannersList[3].slide_label ? bannersList[3].slide_label : 'Banners da sessão top categorias'}}" width="{{ bannersList[3].slide_width }}" height="{{ bannersList[3].slide_height }}" loading="lazy">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,52 @@
+{# {% if banners.extra2 and banners.extra3 %}
+    <div class="container-banner-duplo" data-name="banner-duplo">
+        <div class="container-images">
+            {% if banners.extra2.link %}
+                <a class="banner-duplo-link" href="{{ banners.extra2.link }}" title="Banners sessão banner duplo" target="{{ banners.extra2.target }}">
+                    <img class="banner-duplo-image" src="{{ banners.extra2.src }}" alt="{{ banners.extra2.img_alt ? banners.extra2.img_alt : 'Banners sessão banner duplo' }}" width="{{ banners.extra2.width }}" height="{{ banners.extra2.height }}">
+                </a>
+            {% else %}
+                <img class="banner-duplo-image" src="{{ banners.extra2.src }}" alt="{{ banners.extra2.img_alt ? banners.extra2.img_alt : 'Banners sessão banner duplo' }}" width="{{ banners.extra2.width }}" height="{{ banners.extra2.height }}">
+            {% endif %}
+            {% if banners.extra3.link %}
+                <a class="banner-duplo-link" href="{{ banners.extra3.link }}" title="Banners sessão banner duplo" target="{{ banners.extra3.target }}">
+                    <img class="banner-duplo-image" src="{{ banners.extra3.src }}" alt="{{ banners.extra3.img_alt ? banners.extra3.img_alt : 'Banners sessão banner duplo' }}" width="{{ banners.extra3.width }}" height="{{ banners.extra3.height }}">
+                </a>
+            {% else %}
+                <img class="banner-duplo-image" src="{{ banners.extra3.src }}" alt="{{ banners.extra3.img_alt ? banners.extra3.img_alt : 'Banners sessão banner duplo' }}" width="{{ banners.extra3.width }}" height="{{ banners.extra3.height }}">
+            {% endif %}
+        </div>
+    </div>
+{% endif %} #}
+
+{% set bannersList = [] %}    
+{% for slide in banners.extra3.slides %}
+    {% set slideLink = slide.link %}
+    {% set slideTarget = slide.target %}
+    {% set slideImage = slide.image %}
+    {% set slideLabel = slide.label %}
+    {% set slideHeight = slide.height %}
+    {% set slideWidth = slide.width %}
+    
+    {% set bannersList = bannersList|merge([{"slide_link": slideLink, "slide_target": slideTarget, "slide_image": slideImage, "slide_label": slideLabel, "slide_height": slideHeight, "slide_width": slideWidth }]) %}
+{% endfor %} 
+{% if banners.extra3 %}
+    <div class="container-banner-duplo" data-name="banner-duplo">
+        <div class="container-images">
+            {% if bannersList[0].slide_link %}
+                <a class="banner-duplo-link" href="{{ bannersList[0].slide_link }}" title="Banners sessão banner duplo" target="{{ bannersList[0].slide_target }}">
+                    <img class="banner-duplo-image" src="{{ bannersList[0].slide_image }}" alt="{{ bannersList[0].slide_label ? bannersList[0].slide_label : 'Banners sessão banner duplo' }}" width="{{ bannersList[0].slide_width }}" height="{{ bannersList[0].slide_height }}">
+                </a>
+            {% else %}
+                <img class="banner-duplo-image" src="{{ bannersList[0].slide_image }}" alt="{{ bannersList[0].slide_label ? bannersList[0].slide_label : 'Banners sessão banner duplo' }}" width="{{ bannersList[0].slide_width }}" height="{{ bannersList[0].slide_height }}">
+            {% endif %}
+            {% if bannersList[1].slide_link %}
+                <a class="banner-duplo-link" href="{{ bannersList[1].slide_link }}" title="Banners sessão banner duplo" target="{{ banners.extra9.target }}">
+                    <img class="banner-duplo-image" src="{{ bannersList[1].slide_image }}" alt="{{ bannersList[1].slide_label ? bannersList[1].slide_label : 'Banners sessão banner duplo' }}" width="{{ bannersList[1].slide_width }}" height="{{ bannersList[1].slide_height }}">
+                </a>
+            {% else %}
+                <img class="banner-duplo-image" src="{{ bannersList[1].slide_image }}" alt="{{ bannersList[1].slide_label ? bannersList[1].slide_label : 'Banners sessão banner duplo' }}" width="{{ bannersList[1].slide_width }}" height="{{ bannersList[1].slide_height }}">
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

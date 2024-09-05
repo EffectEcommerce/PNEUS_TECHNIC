@@ -1,0 +1,61 @@
+.page-noticia {
+    .breadcrumb {
+        margin: 2rem 0 2.8rem 0;
+    }
+
+    .container2 {
+        h1 {
+            @include title-h1;
+            margin-top: 0.5rem;
+        }
+
+        .board {
+            @extend %paragraph-text;
+
+            .dataNoticia {
+                @include fontInsert(1.2, 600, var(--c_general_text2));
+                margin-top: 2rem;
+            }
+
+            img {
+                width: 100%;
+                max-width: 25rem;
+                height: auto !important;
+
+                @include small {
+                    display: block;
+                    float: unset;
+                    margin: 0 auto 2.5rem;
+                }
+                @include medium {
+                    float: left;
+                    margin-bottom: 1rem;
+                    margin-right: 1.5rem;
+                }
+                @include large {
+                    float: left;
+                    margin-bottom: 1rem;
+                    margin-right: 2.5rem;
+                }
+            }
+
+            p {
+                margin-top: 2.5rem;
+            }
+
+            .right {
+                justify-content: flex-start;
+                margin-top: 1rem;
+
+                .addthis_inline_share_toolbox.addthis_sharing_toolbox::before {
+                    @include fontInsert(0.875, 600);
+                    content: 'Compartilhar por:';
+                }
+
+                .at-share-tbx-element {
+                    margin-top: 0.5rem;
+                }
+            }
+        }
+    }
+}

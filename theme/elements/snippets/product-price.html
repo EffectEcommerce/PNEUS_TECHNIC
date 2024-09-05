@@ -1,0 +1,46 @@
+{% set current_price = product.price_offer > 0 ? product.price_offer : product.price %} {% set old_price = product.price_offer > 0 ? product.price : false %} 
+
+{% if settings.show_price_titleStarting %}
+    {% if product.has_variation and product.has_other_prices %}
+        <p class="price-titleStarting">{{ Translation('a_partir_de') }}</p>
+    {% endif %}
+{% endif %}
+
+<div class="price display-cash" data-name="product-price">
+    {% if settings.show_pix_showcase %}
+        {% if old_price %}
+            <p class="price-old pix-oriented">{{ settings.currency }} {{ old_price | currency }}</p>
+        {% endif %}
+
+        <p class="price-current pix-oriented">
+            <em class="value"> 
+                {{ settings.currency }} {{ current_price | currency }}
+            </em>
+        </p>
+
+        {% if product.payment_option_details[0].plots %}
+            <div class="text-pix-payment">
+                <p>R$ {{ product.payment_option_details[0].value | replace({".":","})}} <span>à vista com desconto</span></p> 
+            </div>        
+        {% endif %}
+        <div class="pix-oriented">
+            <p class="price-installments">{{ product.payment }}</p>
+        </div>
+
+    {% else %}
+        {% if old_price %}
+            <p class="price-old">{{ settings.currency }} {{ old_price | currency }}</p>
+        {% endif %}
+        <p class="price-current">
+            <em class="value"> 
+                {{ settings.currency }} {{ current_price | currency }}
+            </em>
+        </p>
+    
+        <p class="price-installments">{{ product.payment }}</p>
+
+
+    {% endif %}
+
+
+</div>

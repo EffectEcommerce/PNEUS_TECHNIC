@@ -1,0 +1,88 @@
+<div class="product" data-name="product-snippet">
+    {% if pages.current == 'catalog' and settings.show_compare_btn %}
+        <div class="product-compare">
+            <a href="{{ links.compare_delete ~ product.id }}"
+                class="compare-button {{ not product.compare ? 'compare-hidden' }}"
+                data-compare="remove"
+                aria-describedby="{{ product.name }}"
+            >
+                <span class="compare-checkbox checked"></span>
+                {{ Translation("remover_comparar") }}
+            </a>
+
+            <a href="{{ links.compare_add ~ product.id }}"
+                class="compare-button {{ product.compare ? 'compare-hidden' }}"
+                data-compare="add"
+                aria-describedby="{{ product.name }}"
+            >
+                <span class="compare-checkbox"></span>
+                {{ Translation("comparar_produto") }}
+            </a>
+        </div>
+    {% endif %}
+
+    <div class="product-image">
+        <a href="{{ product.link }}" class="product-link">
+            <img
+                class="product-img lazyload"
+                src="{{ asset('img/empty.png') }}"
+                data-src="{{ product.images[0].large }}"
+                alt="{{ product.name }}"
+                width="450"
+                height="450"
+            />
+            {% if product.images[1] and (not utils.is_mobile) %}
+                <img class="loadlazy product-img product-img-second" src="{{ product.images[1].large }}" alt="{{ product.name }}" >
+            {% endif %}
+        </a>
+
+        {% if not utils.is_mobile %}
+            {% if settings.show_product_tags or settings.show_product_tag_on_listing or settings.show_double_tag %}
+                {% element 'snippets/product-tags' { 'product': product } %}
+            {% endif %}
+        {% endif %}
+        
+    </div>
+
+    <a class="product-info" href="{{ product.link }}">
+        {% if pages.current == 'catalog' %}
+            <span class="product-name">{{ product.name }}</span>
+        {% else %}
+            <span class="product-name">{{ product.name }}</span>
+        {% endif %}
+
+        {% if settings.show_star_review %}
+            {% element 'snippets/product-rating' { 'review': product.ranking } %}
+        {% endif %}
+
+        <div class="product-price">
+            {% if product.available and (product.stock > 0 or settings.without_stock_sale) and not product.upon_request %} 
+                {% element 'snippets/product-price' { 
+                    'product': product 
+                } %} 
+            {% elseif product.upon_request %} 
+                {% element 'snippets/product-message' { 
+                    'product_message': 'Produto sob consulta' 
+                } %} 
+            {% elseif product.stock <= 0 %} 
+                {% element 'snippets/product-message' { 
+                    'product_message': 'Produto indisponível' 
+                } %} 
+            {% else %} 
+                {% element 'snippets/product-message' { 
+                    'product_message': 'Produto indisponível, avise-me quando chegar' 
+                } %}
+            {% endif %}
+        </div>
+    </a>
+
+    <button
+        class="product-button {{ not product.available and not (product.stock > 0 or settings.without_stock_sale) and product.upon_request or product.stock
+        <= 0 or product.upon_request ? 'u-marginNone' }}"
+        type="button" aria-label="Ver Produto"
+    >
+        {% if product.available and (product.stock > 0 or settings.without_stock_sale) and not product.upon_request %}
+            <a class="button2 see-details-btn-prod" href="{{ product.link }}"> Ver detalhes </a>
+        {% endif %}
+    </button>
+</div>

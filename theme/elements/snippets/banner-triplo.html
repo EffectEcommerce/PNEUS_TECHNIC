@@ -1,0 +1,66 @@
+{# {% if banners.extra2 and banners.extra3 and banners.extra4 %}
+    <div class="container-triplo-banner" data-name="banner-triplo">
+
+        {% if utils.is_mobile %}
+            <div class="banner-large">
+                {% if banners.extra5.link %}
+                    <a class="banner-triplo-link" title="Banners link" href="{{ banners.extra5.link }}" target="{{ banners.extra5.target }}">
+                        <img class="banner-triplo-image" src="{{ banners.extra5.src }}" alt="{{ banners.extra5.img_alt ? banners.extra5.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra5.width }}" height="{{ banners.extra5.height }}">
+                    </a>
+                {% else %}
+                    <img class="banner-triplo-image" src="{{ banners.extra5.src }}" alt="{{ banners.extra5.img_alt ? banners.extra5.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra5.width }}" height="{{ banners.extra5.height }}">
+                {% endif %}
+            </div>
+
+            <div class="banners-small">
+                {% if banners.extra6.link %}
+                    <a class="banner-triplo-link" title="Banners link" href="{{ banners.extra6.link }}" target="{{ banners.extra6.target }}">
+                        <img class="banner-triplo-image" src="{{ banners.extra6.src }}" alt="{{ banners.extra6.img_alt ? banners.extra6.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra6.width }}" height="{{ banners.extra6.height }}">
+                    </a>
+                {% else %}
+                    <img class="banner-triplo-image" src="{{ banners.extra6.src }}" alt="{{ banners.extra6.img_alt ? banners.extra6.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra6.width }}" height="{{ banners.extra6.height }}">
+                {% endif %}
+
+                {% if banners.extra7.link %}
+                    <a class="banner-triplo-link" title="Banners link" href="{{ banners.extra7.link }}" target="{{ banners.extra7.target }}">
+                        <img class="banner-triplo-image" src="{{ banners.extra7.src }}" alt="{{ banners.extra7.img_alt ? banners.extra7.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra7.width }}" height="{{ banners.extra7.height }}">
+                    </a>
+                {% else %}
+                    <img class="banner-triplo-image" src="{{ banners.extra7.src }}" alt="{{ banners.extra7.img_alt ? banners.extra7.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra7.width }}" height="{{ banners.extra7.height }}">
+                {% endif %}
+            </div>
+            
+        {% else %}
+            <div class="banner-large">
+                {% if banners.extra2.link %}
+                    <a class="banner-triplo-link" title="Banners link" href="{{ banners.extra2.link }}" target="{{ banners.extra2.target }}">
+                        <img class="banner-triplo-image" src="{{ banners.extra2.src }}" alt="{{ banners.extra2.img_alt ? banners.extra2.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra2.width }}" height="{{ banners.extra2.height }}">
+                    </a>
+                {% else %}
+                    <img class="banner-triplo-image" src="{{ banners.extra2.src }}" alt="{{ banners.extra2.img_alt ? banners.extra2.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra2.width }}" height="{{ banners.extra2.height }}">
+                {% endif %}
+            </div>
+
+            <div class="banners-small">
+                {% if banners.extra3.link %}
+                    <a class="banner-triplo-link" title="Banners link" href="{{ banners.extra3.link }}" target="{{ banners.extra3.target }}">
+                        <img class="banner-triplo-image" src="{{ banners.extra3.src }}" alt="{{ banners.extra3.img_alt ? banners.extra3.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra3.width }}" height="{{ banners.extra3.height }}">
+                    </a>
+                {% else %}
+                    <img class="banner-triplo-image" src="{{ banners.extra3.src }}" alt="{{ banners.extra3.img_alt ? banners.extra3.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra3.width }}" height="{{ banners.extra3.height }}">
+                {% endif %}
+
+                {% if banners.extra4.link %}
+                    <a class="banner-triplo-link" title="Banners link" href="{{ banners.extra4.link }}" target="{{ banners.extra4.target }}">
+                        <img class="banner-triplo-image" src="{{ banners.extra4.src }}" alt="{{ banners.extra4.img_alt ? banners.extra4.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra4.width }}" height="{{ banners.extra4.height }}">
+                    </a>
+                {% else %}
+                    <img class="banner-triplo-image" src="{{ banners.extra4.src }}" alt="{{ banners.extra4.img_alt ? banners.extra4.img_alt : 'Banners da sessão banner triplo'}}" width="{{ banners.extra4.width }}" height="{{ banners.extra4.height }}">
+                {% endif %}
+            </div>
+        {% endif %}
+        
+        
+    </div>
+{% endif %}
+ #}

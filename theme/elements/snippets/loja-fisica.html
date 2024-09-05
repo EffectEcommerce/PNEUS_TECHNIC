@@ -1,0 +1,52 @@
+{% set count = 0 %}
+
+<div class="container-loja-fisica" data-name="loja-fisica">
+    <div class="title-container">
+        <span class="separator-title"></span>
+        <h2>
+           MARCAS
+        </h2>
+        <span class="separator-title"></span>
+    </div>
+
+    <div class="container-swiper-btn">
+        <div class="container-lojas swiper-loja">
+            <div class="container-lojas-wrapper swiper-wrapper">
+                {% for i in 1..12 %}
+                    {% set name = attribute(settings, 'car_marca_name_' ~ i) %}
+                    {% set url = attribute(settings, 'car_marca_link_' ~ i) %}
+                    {% set photo = attribute(settings, 'img_car_loja_' ~ i) %}
+                    
+    
+                    {% if name and photo %}
+                        {% set count = count + 1 %}
+    
+                        <a class="swiper-slide" href="{{ url }}" title="Marcas da loja">
+                            <div class="loja">
+                                <img class="loja-img" src="{{ asset(photo) }}" alt="Foto loja física" />
+                    
+                                <div class="loja-text-container ">
+                                    <div class="loja-text">
+                                        <span>{{ name }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                       
+    
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    window.count = {
+        countPath: '{{ count }}',
+    };
+</script>

@@ -1,0 +1,110 @@
+<style>
+    html{
+        --c_general_main: {{ settings.c_general_main }};
+        --c_general_text1: {{ settings.c_general_text1 }};
+        --c_general_text2: {{ settings.c_general_text2 }};
+        --c_general_text_inverted : {{ settings.c_general_text_inverted }};
+        --c_general_secondary: {{ settings.c_general_secondary }};
+        --c_contrast_and_button: {{ settings.c_contrast_and_button }};
+
+        --c_side_regua_topo_bg: {{ settings.c_side_regua_topo_bg }};
+        --c_regua_topo_bg: {{ settings.c_regua_topo_bg }};
+        --c_regua_topo_text: {{ settings.c_regua_topo_text }};
+
+        --c_general_details: {{ settings.c_general_details }};
+        --c_general_background: {{ settings.c_general_background }};
+        --c_general_inverted : {{ settings.c_general_inverted }};
+
+        --c_header_bg: {{ settings.c_header_bg }};
+        --c_header_text_main: {{ settings.c_header_text_main }};
+        --c_header_text_secondary: {{ settings.c_header_text_secondary }};
+        --c_header_icon: {{ settings.c_header_icon }};
+        --c_header_icon_search: {{ settings.c_header_icon_search }};
+        --c_header_search_bg: {{ settings.c_header_search_bg}};
+        --c_header_search_color: {{ settings.c_header_search_color}};
+        --c_header_search_border: {{ settings.c_header_search_border}};
+        --c_header_cart: {{ settings.c_header_cart }};
+        --bg_btn_header_fill: {{ settings.bg_btn_header_fill }};
+        --c_btn_header_fill: {{ settings.c_btn_header_fill }};
+        --border_btn_header: {{ settings.border_btn_header }};
+        --c_btn_header_border: {{ settings.c_btn_header_border }};
+        --c_btn_header_text: {{ settings.c_btn_header_text }};
+        --bg_header_account: {{ settings.bg_header_account }};
+        --c_swiper_dots: {{ settings.c_swiper_dots }};
+        --c_swiper_bg: {{ settings.c_swiper_bg }};
+        --c_swiper_border: {{ settings.c_swiper_border }};
+        --c_categories_bg: {{ settings.c_categories_bg }};
+        --c_categories_color: {{ settings.c_categories_color }};
+        --c_bg_cart_modal: {{ settings.c_bg_cart_modal }};
+        --c_color_cart_modal: {{ settings.c_color_cart_modal }};
+        --c_trash_cart_modal: {{ settings.c_trash_cart_modal }};
+        --c_bg_btn_cart_modal: {{ settings.c_bg_btn_cart_modal }};
+        --c_txt_btn_cart_modal: {{ settings.c_txt_btn_cart_modal }};
+        --c_txt_nav_sub: {{ settings.c_txt_nav_sub }};
+        --c_regua_topo_arrows: {{ settings.c_regua_topo_arrows }};
+
+        --bg_showcase_btn: {{ settings.bg_showcase_btn }};
+        --bg_showcase_btn_hover: {{ settings.bg_showcase_btn_hover }};
+        --c_showcase_btn: {{ settings.c_showcase_btn }};
+        --c_showcase_price_text: {{ settings.c_showcase_price_text }};
+        --c_showcase_add_info: {{ settings.c_showcase_add_info }};
+        --c_showcase_title: {{ settings.c_showcase_title }};
+        --c_showcase_title_detail: {{ settings.c_showcase_title_detail }};
+        --bg_selos_destaque: {{ settings.bg_selos_destaque }};
+        --color_selos_destaque: {{ settings.color_selos_destaque }};
+        --bg_selos_desconto: {{ settings.bg_selos_desconto }};
+        --color_selos_desconto: {{ settings.color_selos_desconto }};
+        --bg_selos_new: {{ settings.bg_selos_new }};
+        --color_selos_new: {{ settings.color_selos_new }};
+        --bg_selos_adcional: {{ settings.bg_selos_adcional }};
+        --color_selos_adcional: {{ settings.color_selos_adcional }};
+
+
+        --bg_comp_btn_catalog: {{ settings.bg_comp_btn_catalog }};
+        --c_comp_btn_catalog: {{ settings.c_comp_btn_catalog }};
+        --bg_btn_filter_catalog: {{ settings.bg_btn_filter_catalog }};
+        --c_btn_filter_catalog: {{ settings.c_btn_filter_catalog }};
+
+        --c_prod_title: {{ settings.c_prod_title }};
+        --c_prod_price: {{ settings.c_prod_price }};
+        --bg_prod_btn_pag: {{ settings.bg_prod_btn_pag }};
+        --bg_prod_btn_pag_hover: {{ settings.bg_prod_btn_pag_hover }};
+        --c_prod_btn_pag: {{ settings.c_prod_btn_pag }};
+        --bg_prod_frete_input: {{ settings.bg_prod_frete_input }};
+        --c_prod_frete_input: {{ settings.c_prod_frete_input }};
+        --bg_prod_frete_btn: {{ settings.bg_prod_frete_btn }};
+        --c_prod_frete_btn: {{ settings.c_prod_frete_btn }};
+
+        --c_header_cart_text: {{ settings.c_header_cart_text }};
+
+        --bg_temp_promo: {{ settings.bg_temp_promo }};
+        --c_temp_promo_text: {{ settings.c_temp_promo_text }};
+        --bg_temp_promo_icon: {{ settings.bg_temp_promo_icon }};
+
+        --c_news_title: {{ settings.c_news_title }};
+        --c_news_desc: {{ settings.c_news_desc }};
+        --bg_btn_news: {{ settings.bg_btn_news }};
+        --c_btn_news: {{ settings.c_btn_news }};
+        
+        --c_footer_bg: {{ settings.c_footer_bg }};
+        --c_footer_title: {{ settings.c_footer_title }};
+        --c_footer_text: {{ settings.c_footer_text }};
+        --c_footer_icon: {{ settings.c_footer_icon }};
+        --c_footer_icon_atendimento: {{ settings.c_footer_icon_atendimento }};
+        --c_footer_details_bg: {{ settings.c_footer_details_bg }};
+
+        --c_newsletter_title: {{ settings.c_newsletter_title }};
+        --c_newsletter_subtitle: {{ settings.c_newsletter_subtitle }};
+        --c_input_newsletter: {{ settings.c_input_newsletter }};
+        --bg_input_newsletter: {{ settings.bg_input_newsletter }};
+        --bg_newsletter_1: {{ settings.bg_newsletter_1 }};
+        --bg_newsletter_2: {{ settings.bg_newsletter_2 }};
+        --bg_cad_newsletter: {{ settings.bg_cad_newsletter }};
+        --bg_cad_newsletter_hover: {{ settings.bg_cad_newsletter_hover }};
+
+        --c_alert_error: {{ settings.c_alert_error }};
+        --c_alert_error_bg: {{ settings.c_alert_error_bg }};
+
+        --arrow_select: url("data:image/svg+xml,%3Csvg fill='%23{{ settings.text_input|replace({'#': ''}) }}' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 284.929 284.929'%3E%3Cpath d='M282.082,76.511l-14.274-14.273c-1.902-1.906-4.093-2.856-6.57-2.856c-2.471,0-4.661,0.95-6.563,2.856L142.466,174.441 L30.262,62.241c-1.903-1.906-4.093-2.856-6.567-2.856c-2.475,0-4.665,0.95-6.567,2.856L2.856,76.515C0.95,78.417,0,80.607,0,83.082 c0,2.473,0.953,4.663,2.856,6.565l133.043,133.046c1.902,1.903,4.093,2.854,6.567,2.854s4.661-0.951,6.562-2.854L282.082,89.647 c1.902-1.903,2.847-4.093,2.847-6.565C284.929,80.607,283.984,78.417,282.082,76.511z' /%3E%3C/svg%3E%0A");
+    }
+</style>

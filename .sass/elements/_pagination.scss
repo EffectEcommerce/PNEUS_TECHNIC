@@ -1,0 +1,63 @@
+.pagination {
+    @extend %flex-center-center;
+    margin: 3.5rem 0;
+
+    .page {
+        margin: 0 0.5rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.first.u-desktop,
+        &.last.u-desktop {
+            @include medium {
+                display: none;
+            }
+        }
+
+        a,
+        &.current {
+            @extend %button-pagination;
+        }
+
+        a {
+            @include fontInsert(0.95, 600, var(--c_general_text1));
+            background-color: var(--c_general_details);
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+
+        &.current {
+            @include fontInsert(0.95, 600, var(--c_general_text_inverted));
+            background-color: var(--c_general_secondary);
+        }
+    }
+
+    &-prev {
+        &::before {
+            display: inline-block;
+            transform: rotate(180deg);
+        }
+    }
+
+    &-prev,
+    &-next {
+        &::before {
+            color: var(--c_general_text1);
+            font-size: 0.8rem;
+            line-height: $v_dimension_pagination;
+        }
+    }
+
+    &-text {
+        @include fontInsert(0.95, 600, var(--c_general_text1), uppercase);
+        padding: 0 1.5rem;
+    }
+}

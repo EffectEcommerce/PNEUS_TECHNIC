@@ -1,0 +1,87 @@
+{% if type %}
+    {% set quantity = quantity | default(8) %}
+    {% set title %}
+        {{ type == 'top_seller' ? 'Mais Vendidos' :
+            type == 'new' ? 'Lançamentos' :
+            type == 'featured' ? 'Destaques' : 
+            type == 'free_shipping' ? 'Frete Grátis' : 
+            type == 'promotion' ? 'Promoção'
+        }}
+    {% endset %}
+
+    {% if type == 'top_seller' %}
+        {% set products = Products({
+            'filter': ['available'],
+            'order' : { 'quantity_sold': 'desc' },
+            'limit' : quantity
+        }) %}
+    {% else %}
+
+        {% if rand %}
+            {% set products = Products({
+                'filter': [type, 'available'],
+                'limit' : quantity,
+                'order' : 'rand'
+            }) %}
+        {% else %}
+            {% set products = Products({
+                'filter': [type, 'available'],
+                'limit' : quantity
+            }) %}
+        {% endif %}
+        
+
+    {% endif %}
+    {% if type == 'relacionado' %}
+        {% if product_related %}
+            {% set title = "PRODUTOS RELACIONADOS" %}
+            {% set subtitle = "Você também pode gostar" %}
+            {% set products = product_related %}
+        {% endif %}
+    {% endif %}
+
+    {% if products | length > 0 %}
+        <div class="showcase-wrapper">
+            <div class="showcase-swipper-btn-container">
+                <section class="section showcase {{ settings.show_showcase ? 'swiper-show' }}" data-name="home-showcase">
+            
+                    <div class="title-container">
+                        <span class="separator-title"></span>
+                        <h2>
+                            {{ title_showcase ? title_showcase : title }}
+                        </h2>
+                        <span class="separator-title"></span>
+                    </div>
+        
+                    {% if settings.show_temp_promo %}
+                        <div class="temporizador-promo" data-end-time="{{ settings.end_date_temp_promo }}">
+                            {% element 'snippets/temporizador_promo' %}
+                        </div>
+                    {% endif %}
+                    
+                    <ul class="showcase-listProduct carrossel-product {{ settings.show_showcase ? 'swiper-wrapper' }}">
+                        {% for item in products %}
+                            <li class="listProduct-item {{ settings.show_showcase ? 'swiper-slide' }} ">
+                                {% element 'snippets/product' {
+                                    product : item,
+                                    slide   : false
+                                } %}
+                            </li>
+                        {% endfor %}
+        
+                        
+                    </ul>
+        
+                    {% if settings.show_showcase %}
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    {% endif %}
+        
+                </section>
+            </div>
+            
+        </div>
+        
+    {% endif %}
+
+{% endif %}

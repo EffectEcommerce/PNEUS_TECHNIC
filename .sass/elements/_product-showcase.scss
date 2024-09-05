@@ -1,0 +1,229 @@
+
+.showcase-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .showcase-swipper-btn-container{
+        position: relative;
+        max-width: 1608px;
+        width: 100%;
+    }
+
+    .showcase{
+        overflow: hidden; 
+    
+        @include small{
+            margin-left: 12px;
+            margin-right: 0;    
+        }
+
+        &.section{
+            max-width: 1454px;
+        }
+
+        .swiper-button-prev, .swiper-button-next{
+            z-index: 1;
+            margin-top: 40px;
+        }
+    }
+}
+
+.product-img-second {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+}
+
+.product:hover .product-img-second {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.title-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 24px;
+
+    h2{
+        color: var(--c_showcase_title);
+        text-align: center;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+
+    .separator-title{
+        width: 48px;
+        height: 1px;
+        background-color: var(--c_showcase_title_detail);
+    }
+}
+
+.swiper-slide{
+    height: auto;   
+}
+
+.swiper-button-prev:focus, .swiper-button-next:focus {
+    outline: none !important;
+}
+.swiper-button-prev, .swiper-button-next{
+    z-index: 1;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after{
+    font-size: 30px;
+    color: #000;
+    z-index: 1;
+}
+
+.product{
+    border-radius: 8px;
+
+    .see-details-btn-prod{
+        border-radius: 10px;
+        background-color: var(--bg_showcase_btn);
+        color: var(--c_showcase_btn);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .price-current, .price-titleStarting{
+        text-align: left;
+    }
+
+    .price-installments{
+        text-align: left;
+        font-size: 16px;
+        font-style: normal;
+        line-height: normal;
+
+        .operadora, .txt-forma-pagamento{
+            display: none;
+        }
+
+        .txt-avista, .txt-com-desconto, .preco-avista{
+            color: var(--c_showcase_add_info);
+        }
+    }
+
+    .product-name{
+        padding-bottom: 1rem;
+        text-align: left;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%;
+        @include small{
+            display: -webkit-box !important;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            max-height: 65px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .price-old{
+        text-align: left;
+        text-decoration: line-through;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+    }
+    
+    .price-old.pix-oriented{
+        text-align: left;
+        text-decoration: line-through;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+    }
+
+    .product-price .price-current .value{
+        font-size: 20px;
+        font-style: normal;
+        line-height: normal;
+        color: var(--c_showcase_price_text);
+    }
+
+    .product-price .price-current.pix-oriented .value{
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+        color: var(--c_showcase_add_info);
+    }
+
+    .pix-oriented{
+        .preco-avista, .txt-avista, .txt-com-desconto{
+            display: none;
+        }
+    }
+
+    .price.display-cash{
+        .price-installments{
+            color: var(--c_showcase_price_text);
+            margin-top: -19px;
+
+            .txt-corparcelas .color{
+                color: var(--c_showcase_price_text);
+            }
+        }
+
+    }
+
+    .text-pix-payment{
+        p{
+            text-align: left;
+            font-size: 20px;
+            font-weight: 700;
+            font-style: normal;
+            line-height: normal;
+            color: var(--c_showcase_price_text);
+
+            span{
+                color: var(--c_showcase_add_info);
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+    }
+
+}
+
+.showcase-listProduct.swiper-wrapper {
+    flex-wrap: nowrap;
+    //margin: 0 -0.625rem -2.5rem;
+    margin: 0 2px -2.5rem;
+  }
+
+
+@media (max-width: 360px){
+    .showcase .product .see-details-btn-prod{
+        font-size: 12px;
+    }
+    .showcase .title-container h2{
+        font-size: 20px;
+    }
+}
+@include small{
+    .title-container h2{
+        font-size: 20px;
+    }
+}
+a.button2.see-details-btn-prod:hover{
+    background-color: var(--bg_showcase_btn_hover);
+    opacity: 1;
+}

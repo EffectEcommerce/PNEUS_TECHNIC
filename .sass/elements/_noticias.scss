@@ -1,0 +1,94 @@
+.section{
+
+    #news-container.news-container{
+
+        .news-content{
+            flex-wrap: wrap;
+
+            @include medium{
+                flex-direction: row;
+            }
+        }
+
+        li{
+            background-color: transparent;
+            width: 45%;
+
+            @include small{
+                width: 100%;
+                margin: 0;
+            }
+
+            .news-item {
+                display: flex;
+                max-width: 430px;
+                width: 100%;
+                gap: 20px;
+
+                @include small{
+                    flex-direction: column;
+                    width: 258px;
+                }
+
+                @include medium{
+                    flex-direction: column;
+                }
+
+                #noticia_dados h3 a{
+                    color: var(--c_news_title);
+                }
+
+                #noticia_dados p{
+                    color: var(--c_news_desc);
+                }
+
+                p:after{
+                    content: "";
+                    background-color: transparent;
+                }
+
+                div#noticia_imagem {
+                    width: 60%;
+                    height: 240px;
+
+                    @include small{
+                        width: 100%;
+
+                    }
+
+                    @include medium{
+                        width: 100%;
+
+                    }
+
+                }
+
+                div#noticia_dados {
+                    width: 40%;
+
+                    @include small{
+                        width: 100%;
+                    }
+
+                    @include medium{
+                        width: 100%;
+
+                    }
+                }
+            }
+
+            #noticia_imagem a img{
+                max-width: 240px;
+                max-height: 240px;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .news-button a{
+            border-radius: 8px;
+            background-color: var( --bg_btn_news);
+            color: var(--c_btn_news);
+        }
+    }
+}

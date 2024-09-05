@@ -1,0 +1,51 @@
+.modals {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: $transit_default;
+    margin: auto auto;
+    height: inherit;
+    width: inherit;
+
+    &.u-show {
+        @extend %flex-center-center;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &-box {
+        background-color: var(--c_general_inverted);
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
+        border-radius: 0.5rem;
+        z-index: 21;
+        overflow: hidden;
+        min-width: 200px;
+        max-width: 1000px;
+        width: 100%;
+    }
+
+    .box-button {
+        @extend %flex-end-center;
+        border-bottom: $v_border_sections;
+        margin: 0.5rem 0;
+        padding: 1rem;
+        height: 2rem;
+        width: 100%;
+
+        .close-modal {
+            cursor: pointer;
+            opacity: 1;
+            transition: $transit_default;
+
+            &:hover {
+                opacity: 0.8;
+                transform: rotate(180deg);
+            }
+        }
+    }
+}

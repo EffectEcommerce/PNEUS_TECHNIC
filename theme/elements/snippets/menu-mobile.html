@@ -1,0 +1,98 @@
+<aside id="menu-mobile" class="menuMobile" data-name="menu-mobile">
+    <div class="menuMobile-title">
+        <span class="icon-menu" aria-hidden="true"></span>
+        Menu
+
+        <button class="menuMobile-close" data-toggle="close" aria-label="Fechar" title="Fechar">
+            <span class="icon-exit" aria-hidden="true"></span>
+        </button>
+    </div>
+    <div class="menuMobile-account">
+        <div class="tray-hide account-item logged" data-logged-user="true">
+            <button class="account-button" data-toggle="account">
+                <span class="account-text">Ol&aacute;, <span data-customer="name"></span></span>
+                <span class="icon-arrow-simple" aria-hidden="true"></span>
+            </button>
+            <div class="account-access">
+                <span class="icon-account" aria-hidden="true"></span>
+                <a class="account-link" href="{{ links.central }}" title="Minha Conta"> Minha conta </a>
+                <span class="account-separator">/</span>
+                <a class="account-link" href="{{ links.logout }}" title="Sair">Sair</a>
+            </div>
+        </div>
+        <div class="tray-hide account-item loggedout u-show" data-logged-user="false">
+            <button class="account-button" data-toggle="account">
+                <span class="account-text">Minha Conta</span>
+                {# <span class="icon-arrow-simple" aria-hidden="true"></span> #}
+            </button>
+            <div class="account-access">
+                <span class="icon-account" aria-hidden="true"></span>
+                <a class="account-link" href="{{ links.login }}" title="Entrar">Entrar</a>
+                <span class="account-separator">/</span>
+                <a class="account-link" href="{{ links.register }}" title="Cadastrar">Cadastrar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="menuMobile-content">
+        <nav class="menuMobile-menu">
+            <ul class="menu-list">
+                {% for category in categories %}
+                    <li class="menu-firstLevel  {{ category.children ? 'subList' }}">
+                        <div class="menu-link-div">
+                            {% if not category.children %}<a href="{{category.link}}" style="width: -webkit-fill-available;">{{ category.name }}</a>{% elseif category.children %}{{ category.name }}
+                            {% endif %}
+                        </div>
+                        {% if category.children %}
+                            <ul class="menu-secondLevel">
+                                <a class="menu-link" href="{{ category.link }}">{{ category.name }}</a>
+                                {% for level2 in category.children %}
+                                    <li {% if level2.children %} class="sub" {% endif %}>
+                                        <a class="menu-link" href="{{ level2.link }}">{{ level2.name }}</a>
+                                        {% if level2.children %}
+                                            <ul class="menu-thirdLevel">
+                                                {% for level3 in level2.children %}
+                                                    <li>
+                                                        <a class="menu-link" href="{{ level3.link }}">{{ level3.name }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </nav>
+    </div>
+    <div class="icon-container-mobile">
+        <a class="header-rastreamento icone-header-mobile" href="{{ settings.menu_rastreamento_link ? settings.menu_rastreamento_link : "#" }}" title="Rastreamento">
+            {% if settings.icon_menu_rastreamento %}
+                <img class="icone-menu" src="{{ asset(settings.icon_menu_rastreamento) }}" alt="Ícone de rastreamento">
+            {% else %}
+                <div class="svg-rastreamento">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
+                        <path d="M22.3 13.75V14.25H22.8H23.4C23.4191 14.25 23.4416 14.2575 23.4631 14.2799C23.4848 14.3025 23.5 14.3356 23.5 14.375V15.625C23.5 15.6644 23.4848 15.6975 23.4631 15.7201C23.4416 15.7425 23.4191 15.75 23.4 15.75H21.6H21.1V16.25C21.1 18.0636 19.6923 19.5 18 19.5C16.3077 19.5 14.9 18.0636 14.9 16.25V15.75H14.4H9.6H9.1V16.25C9.1 18.0636 7.69232 19.5 6 19.5C4.30768 19.5 2.9 18.0636 2.9 16.25V15.75H2.4H1.8C1.10143 15.75 0.5 15.1534 0.5 14.375V1.875C0.5 1.09655 1.10143 0.5 1.8 0.5H13.8C14.4986 0.5 15.1 1.09655 15.1 1.875V3.75V4.25H15.6H17.2538C17.5892 4.25 17.9178 4.39031 18.1643 4.64705L21.9106 8.54939C22.1576 8.80673 22.3 9.15878 22.3 9.52734V13.75ZM21 10.5H21.5V10V9.52734V9.32619L21.3607 9.18108L17.6144 5.27873L17.4669 5.125H17.2538H15.6H15.1V5.625V10V10.5H15.6H21ZM3.7 16.25C3.7 17.5419 4.71107 18.625 6 18.625C7.28893 18.625 8.3 17.5419 8.3 16.25C8.3 14.9581 7.28893 13.875 6 13.875C4.71107 13.875 3.7 14.9581 3.7 16.25ZM15.7 16.25C15.7 17.5419 16.7111 18.625 18 18.625C19.2889 18.625 20.3 17.5419 20.3 16.25C20.3 14.9581 19.2889 13.875 18 13.875C16.7111 13.875 15.7 14.9581 15.7 16.25Z" stroke="black"/>
+                      </svg>
+                </div>
+                
+            {% endif %}
+
+            <span class="text-account-header">{{ settings.menu_rastreamento_text ? settings.menu_rastreamento_text : 'Rastrear Pedido' }}</span>
+        </a>
+        <a class="header-atendimento icone-header-mobile" href="{{ links.contact }}" title="Atendimento">
+            {% if settings.icon_menu_atendimento %}
+                <img class="icone-menu" src="{{ asset(settings.icon_menu_atendimento) }}" alt="Ícone de atendimento">
+            {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <path d="M20.5583 32V30.2878H29.25V28.7467H24.9333V20.2996H29.25V18.3591C29.25 16 28.4042 13.9691 26.7125 12.2663C25.0208 10.5636 22.9694 9.71225 20.5583 9.71225C18.1472 9.71225 16.0764 10.5636 14.3458 12.2663C12.6153 13.9691 11.75 16 11.75 18.3591V20.2996H16.0667V28.7467H11.75C11.2833 28.7467 10.875 28.5755 10.525 28.2331C10.175 27.8906 10 27.4911 10 27.0345V18.3591C10 16.9373 10.2771 15.5972 10.8313 14.3387C11.3854 13.0802 12.1389 11.9803 13.0917 11.0388C14.0444 10.0974 15.1645 9.35553 16.4518 8.81332C17.7391 8.27111 19.1099 8 20.5643 8C22.0187 8 23.3826 8.27111 24.6562 8.81332C25.9299 9.35553 27.0338 10.0974 27.9682 11.0388C28.9025 11.9803 29.6414 13.0802 30.1849 14.3387C30.7283 15.5972 31 16.9373 31 18.3591V30.2878C31 30.7444 30.825 31.1439 30.475 31.4863C30.125 31.8288 29.7167 32 29.25 32H20.5583ZM11.75 27.0345H14.3167V22.0119H11.75V27.0345ZM26.6833 27.0345H29.25V22.0119H26.6833V27.0345Z" fill="black"/>
+                </svg>
+            {% endif %}
+
+            <span class="text-account-header">{{ settings.menu_atendimento_text ? settings.menu_atendimento_text : 'Atendimento' }}</span>
+        </a>
+    </div>
+</aside>

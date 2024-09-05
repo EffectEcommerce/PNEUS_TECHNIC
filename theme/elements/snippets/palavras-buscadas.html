@@ -1,0 +1,10 @@
+<section class="section tagCloud">
+    <h2 class="section-title">{{ Translation('tags_mais_buscadas') }}</h2>
+    <ul class="tagCloud-list">
+        {% for tag in tags %}
+            <li class="tagCloud-item">
+                <a class="tagCloud-word" href="{{ tag.url }}" rel="next" target="_self">{{ tag.word }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>

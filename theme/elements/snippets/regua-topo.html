@@ -1,0 +1,47 @@
+<div class="regua-wrapper" data-name="regua-topo">
+    <div class="regua-container">
+        <div class="regua-text-container swiper-wrapper">
+            <span class="regua-text">
+                {% if settings.icon_regua_topo_1 %}
+                    <img class="regua-text-img icon" src="{{ asset(settings.icon_regua_topo_1) }}" alt="Icon regua topo">
+                {% endif %}
+                
+                {{ settings.regua_topo_text_1 }}
+            </span>
+            <span class="regua-text">
+                {% if settings.icon_regua_topo_2 %}
+                    <img class="regua-text-img" src="{{ asset(settings.icon_regua_topo_2) }}" alt="Icon regua topo">
+                {% endif %}
+              
+                {{ settings.regua_topo_text_2 }}
+            </span>
+            <span class="regua-text">
+                {% if settings.icon_regua_topo_3 %}
+                    <img class="regua-text-img" src="{{ asset(settings.icon_regua_topo_3) }}" alt="Icon regua topo">
+                {% endif %}
+                
+                {{ settings.regua_topo_text_3 }}
+            </span>
+            <span class="regua-text">
+                {% if settings.icon_regua_topo_4 %}
+                    <img class="regua-text-img" src="{{ asset(settings.icon_regua_topo_4) }}" alt="Icon regua topo">
+                {% endif %}
+                {{ settings.regua_topo_text_4 }}
+            </span>
+        </div>
+    
+        {% if settings.use_car_regua_topo %}
+            <div class="btnPrev swiper-button-prev"></div>
+            <div class="btnNext swiper-button-next"></div>
+        {% endif %}
+    </div>
+</div>
+
+
+<script>
+    window.swiperReguaTopo = {
+        swiperReguaPath: '{{ settings.use_car_regua_topo }}',
+    };
+</script>
+
+

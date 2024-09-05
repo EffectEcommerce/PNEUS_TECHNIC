@@ -1,0 +1,50 @@
+.fixed-contact {
+    position: fixed;
+    left: 15px;
+    bottom: 90px;
+    font-size: 1rem;
+    z-index: 9;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.fixed-contact.right-position {
+    left: auto;
+    right: 15px;
+    padding: 10px;
+}
+
+.fixed-contact .instagram {
+    width: 3.125em;
+    height: 3.125em;
+    fill: #fff;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition: ease-in-out 0.3s;
+    -o-transition: ease-in-out 0.3s;
+    transition: ease-in-out 0.3s;
+    background:linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+.fixed-contact .instagram  svg {
+    display: block;
+    fill: inherit;
+    display: block;
+    stroke: #fff;
+    width: 30px;
+    stroke-width: 0.065em;
+}
+@include small{
+    .fixed-contact.right-position {
+        right: 1%;
+    }
+}

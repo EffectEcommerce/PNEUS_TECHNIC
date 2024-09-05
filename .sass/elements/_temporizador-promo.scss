@@ -1,0 +1,49 @@
+.temporizador-promo{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    .promotion-timer {
+        text-align: center;
+        max-width: 296px;
+        height: 42px;
+        padding: 4px 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border-radius: 100px;
+        background: var(--bg_temp_promo);
+    
+        &-icon{
+            stroke: var(--bg_temp_promo_icon);
+        }
+        
+        &-text-container{
+    
+            .promotion-timer-text{
+                display: flex;
+                margin-top: -10px;
+            }
+    
+            span{
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                color: var(--c_temp_promo_text);
+            }
+        
+            .time {
+                display: flex;
+                margin: 5px;
+                border-radius: 5px;
+                color: var(--c_temp_promo_text);
+            }
+        }
+    
+        
+    }
+    
+}
+

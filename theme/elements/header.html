@@ -1,0 +1,268 @@
+<header data-header="scroll" class="header header-var-js {{ settings.show_menu_categ ? 'header-categ' }}" data-name="header">
+    {% if settings.show_regua_topo %}
+        {% element 'snippets/regua-topo' %}
+    {% endif %}
+
+    <div class="header-top">
+        <div class="header-content">
+            <button class="header-button mobile" data-toggle="closed" data-target="#menu-mobile" title="Abrir Menu" aria-label="Abrir o menu">
+                <div class="button-line"></div>
+                <div class="button-line"></div>
+                <div class="button-line"></div>
+            </button>
+
+            <a class="header-logo" href="{{ store.url }}" title="Logo da loja" aria-label="logo da {{ store.name }}">
+                {% if settings.logo %}
+                    <img class="header-image" src="{{ asset(settings.logo) }}"
+                        alt="{{ store.name }}"
+                    />
+                 
+                {% endif %} 
+                {% if 'home' in pages.current %}
+                    <h1 class="header-title">{{ store.name }}</h1>
+                {% else %}
+                    <h6 class="header-title">{{ store.name }}</h6>
+                {% endif %}
+            </a>
+            {% if not utils.is_mobile %}
+                {% if settings.logo_secondary %}
+                    <img class="header-image-secondary" src="{{ asset(settings.logo_secondary) }}"
+                        alt="{{ store.name }}"
+                    />
+                {% endif %}
+            {% endif %}
+
+            {% if settings.show_menu_small %}
+                <nav data-menu="scroll" class="header-menu">{% element 'snippets/menu' %}</nav>
+            {% endif %}
+
+            {% if settings.show_menu_small %}
+                <div class="small-menu">
+                    {% element 'snippets/header-search' %}
+
+                    {% if settings.show_menu_rastreamento %}
+                    <a class="header-rastreamento" href="{{ settings.menu_rastreamento_link ? settings.menu_rastreamento_link : 'https://rastreamento.correios.com.br/app/index.php' }}" title="Rastreamento">Rastreamento</a>
+
+                            {% if settings.icon_menu_rastreamento %}
+                                <img class="icone-menu" src="{{ asset(settings.icon_menu_rastreamento) }}" alt="Ícone de rastreamento">
+                            {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
+                                    <path d="M22.3 13.75V14.25H22.8H23.4C23.4191 14.25 23.4416 14.2575 23.4631 14.2799C23.4848 14.3025 23.5 14.3356 23.5 14.375V15.625C23.5 15.6644 23.4848 15.6975 23.4631 15.7201C23.4416 15.7425 23.4191 15.75 23.4 15.75H21.6H21.1V16.25C21.1 18.0636 19.6923 19.5 18 19.5C16.3077 19.5 14.9 18.0636 14.9 16.25V15.75H14.4H9.6H9.1V16.25C9.1 18.0636 7.69232 19.5 6 19.5C4.30768 19.5 2.9 18.0636 2.9 16.25V15.75H2.4H1.8C1.10143 15.75 0.5 15.1534 0.5 14.375V1.875C0.5 1.09655 1.10143 0.5 1.8 0.5H13.8C14.4986 0.5 15.1 1.09655 15.1 1.875V3.75V4.25H15.6H17.2538C17.5892 4.25 17.9178 4.39031 18.1643 4.64705L21.9106 8.54939C22.1576 8.80673 22.3 9.15878 22.3 9.52734V13.75ZM21 10.5H21.5V10V9.52734V9.32619L21.3607 9.18108L17.6144 5.27873L17.4669 5.125H17.2538H15.6H15.1V5.625V10V10.5H15.6H21ZM3.7 16.25C3.7 17.5419 4.71107 18.625 6 18.625C7.28893 18.625 8.3 17.5419 8.3 16.25C8.3 14.9581 7.28893 13.875 6 13.875C4.71107 13.875 3.7 14.9581 3.7 16.25ZM15.7 16.25C15.7 17.5419 16.7111 18.625 18 18.625C19.2889 18.625 20.3 17.5419 20.3 16.25C20.3 14.9581 19.2889 13.875 18 13.875C16.7111 13.875 15.7 14.9581 15.7 16.25Z" fill="var(--c_header_icon)"/>
+                                </svg>
+                            {% endif %}
+
+                        </a>
+                        
+                    {% endif %}
+                    
+                    {% if settings.show_menu_atendimento %}
+                        <a class="header-atendimento" href="{{ links.contact }}" title="Atendimento">
+                            {% if settings.icon_menu_atendimento %}
+                                <img class="icone-menu" src="{{ asset(settings.icon_menu_atendimento) }}" alt="Ícone de atendimento">
+                            {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
+                                <path d="M22.3 13.75V14.25H22.8H23.4C23.4191 14.25 23.4416 14.2575 23.4631 14.2799C23.4848 14.3025 23.5 14.3356 23.5 14.375V15.625C23.5 15.6644 23.4848 15.6975 23.4631 15.7201C23.4416 15.7425 23.4191 15.75 23.4 15.75H21.6H21.1V16.25C21.1 18.0636 19.6923 19.5 18 19.5C16.3077 19.5 14.9 18.0636 14.9 16.25V15.75H14.4H9.6H9.1V16.25C9.1 18.0636 7.69232 19.5 6 19.5C4.30768 19.5 2.9 18.0636 2.9 16.25V15.75H2.4H1.8C1.10143 15.75 0.5 15.1534 0.5 14.375V1.875C0.5 1.09655 1.10143 0.5 1.8 0.5H13.8C14.4986 0.5 15.1 1.09655 15.1 1.875V3.75V4.25H15.6H17.2538C17.5892 4.25 17.9178 4.39031 18.1643 4.64705L21.9106 8.54939C22.1576 8.80673 22.3 9.15878 22.3 9.52734V13.75ZM21 10.5H21.5V10V9.52734V9.32619L21.3607 9.18108L17.6144 5.27873L17.4669 5.125H17.2538H15.6H15.1V5.625V10V10.5H15.6H21ZM3.7 16.25C3.7 17.5419 4.71107 18.625 6 18.625C7.28893 18.625 8.3 17.5419 8.3 16.25C8.3 14.9581 7.28893 13.875 6 13.875C4.71107 13.875 3.7 14.9581 3.7 16.25ZM15.7 16.25C15.7 17.5419 16.7111 18.625 18 18.625C19.2889 18.625 20.3 17.5419 20.3 16.25C20.3 14.9581 19.2889 13.875 18 13.875C16.7111 13.875 15.7 14.9581 15.7 16.25Z" stroke="var(--c_header_icon)"/>
+                              </svg>
+                            {% endif %}
+
+                        </a>
+                    {% endif %}
+
+                    {% if settings.show_menu_perfil %}
+                        <div class="header-account">
+
+                            {% if settings.icon_menu_perfil %}
+                                <img class="icone-menu" src="{{ asset(settings.icon_menu_perfil) }}" alt="Ícone de perfil">
+                            {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                    <path d="M29 31V28.4444C29 27.0889 28.4582 25.7889 27.4937 24.8303C26.5292 23.8718 25.2211 23.3333 23.8571 23.3333H16.1429C14.7789 23.3333 13.4708 23.8718 12.5063 24.8303C11.5418 25.7889 11 27.0889 11 28.4444V31" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M20 18.2222C22.8404 18.2222 25.1429 15.9339 25.1429 13.1111C25.1429 10.2883 22.8404 8 20 8C17.1597 8 14.8572 10.2883 14.8572 13.1111C14.8572 15.9339 17.1597 18.2222 20 18.2222Z" stroke="var(--c_header_icon)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            {% endif %}
+                            
+                            <div class="tray-hide logged" data-logged-user="true">
+                                <div class="account-access dropdown-acess">
+                                    <a class="account-link fill-btn-account" href="{{ links.central }}" title="Minha Conta">Minha conta</a>
+                                    <span class="account-separator">Sair da conta?</span>
+                                    <a class="account-link border-btn-account" href="{{ links.logout }}" title="Sair">Sair</a>
+                                    <a class="account-link border-btn-account" href="/my-account/orders">Meus Pedidos</a>
+                                </div>
+                                
+                            </div>
+                            <div class="tray-hide loggedout" data-logged-user="false">
+                                <div class="account-access dropdown-acess">
+                                    <a class="account-link fill-btn-account" href="{{ links.login }}" title="Entrar">Entrar</a>
+                                    <span class="account-separator">Cliente novo?</span>
+                                    <a class="account-link border-btn-account" href="{{ links.register }}" title="Cadastrar">Cadastrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if settings.show_menu_cart %}
+                        <a href="{{ links.cart }}" title="Carrinho">
+                        
+                            {% if settings.icon_menu_cart %}
+                                <div class="header-cart">
+                                    <div class="cart-icon">
+                                        <img class="icone-menu" src="{{ asset(settings.icon_menu_cart) }}" alt="Ícone de cart">
+                                        <span id="cart-quantity" class="cart-quantity" data-cart="amount">0</span>
+                                    </div>
+                                </div>
+                                
+                            {% else %}
+                                <div class="header-cart">
+                                    <div class="cart-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                            <path d="M6.62245 22C6.06122 22 5.58418 21.8073 5.19133 21.4218C4.79847 21.0363 4.60204 20.5682 4.60204 20.0175C4.60204 19.4668 4.79847 18.9987 5.19133 18.6133C5.58418 18.2278 6.06122 18.035 6.62245 18.035C7.18367 18.035 7.66071 18.2278 8.05357 18.6133C8.44643 18.9987 8.64286 19.4668 8.64286 20.0175C8.64286 20.5682 8.44643 21.0363 8.05357 21.4218C7.66071 21.8073 7.18367 22 6.62245 22ZM17.8469 22C17.2857 22 16.8087 21.8073 16.4158 21.4218C16.023 21.0363 15.8265 20.5682 15.8265 20.0175C15.8265 19.4668 16.023 18.9987 16.4158 18.6133C16.8087 18.2278 17.2857 18.035 17.8469 18.035C18.4082 18.035 18.8852 18.2278 19.2781 18.6133C19.6709 18.9987 19.8673 19.4668 19.8673 20.0175C19.8673 20.5682 19.6709 21.0363 19.2781 21.4218C18.8852 21.8073 18.4082 22 17.8469 22ZM5.16327 3.82728L8.25 10.1051H16.3316L19.8393 3.82728H5.16327ZM4.32143 2.17522H20.8495C21.2798 2.17522 21.6071 2.36796 21.8316 2.75344C22.0561 3.13892 22.0561 3.52441 21.8316 3.90989L18.0434 10.6007C17.8376 10.9495 17.571 11.2295 17.2436 11.4405C16.9162 11.6516 16.5561 11.7572 16.1633 11.7572H7.66071L6.08929 14.6208H19.8673V16.2728H6.34184C5.55612 16.2728 4.99022 16.0159 4.64413 15.5019C4.29804 14.9879 4.30272 14.4097 4.65816 13.7672L6.45408 10.5181L2.18878 1.65206H0V0H3.28316L4.32143 2.17522Z" fill="var(--c_header_icon)"/>
+                                        </svg>
+                                        <span id="cart-quantity" class="cart-quantity" data-cart="amount">0</span>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </a>
+                    {% endif %}
+
+                </div>
+            {% else %}
+                {% element 'snippets/header-search' %}
+            {% endif %}
+            
+            {% if not settings.show_menu_small %}
+                {% if not utils.is_mobile %}
+
+                    {% if settings.show_menu_rastreamento %}
+                        <a class="header-rastreamento" href="{{ settings.menu_rastreamento_link ? settings.menu_rastreamento_link : "https://rastreamento.correios.com.br/app/index.php" }}" title="Rastreamento" target="_blank">
+                            {% if settings.icon_menu_rastreamento %}
+                                <img class="icone-menu" src="{{ asset(settings.icon_menu_rastreamento) }}" alt="Ícone de rastreamento">
+                            {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
+                                <path d="M22.3 13.75V14.25H22.8H23.4C23.4191 14.25 23.4416 14.2575 23.4631 14.2799C23.4848 14.3025 23.5 14.3356 23.5 14.375V15.625C23.5 15.6644 23.4848 15.6975 23.4631 15.7201C23.4416 15.7425 23.4191 15.75 23.4 15.75H21.6H21.1V16.25C21.1 18.0636 19.6923 19.5 18 19.5C16.3077 19.5 14.9 18.0636 14.9 16.25V15.75H14.4H9.6H9.1V16.25C9.1 18.0636 7.69232 19.5 6 19.5C4.30768 19.5 2.9 18.0636 2.9 16.25V15.75H2.4H1.8C1.10143 15.75 0.5 15.1534 0.5 14.375V1.875C0.5 1.09655 1.10143 0.5 1.8 0.5H13.8C14.4986 0.5 15.1 1.09655 15.1 1.875V3.75V4.25H15.6H17.2538C17.5892 4.25 17.9178 4.39031 18.1643 4.64705L21.9106 8.54939C22.1576 8.80673 22.3 9.15878 22.3 9.52734V13.75ZM21 10.5H21.5V10V9.52734V9.32619L21.3607 9.18108L17.6144 5.27873L17.4669 5.125H17.2538H15.6H15.1V5.625V10V10.5H15.6H21ZM3.7 16.25C3.7 17.5419 4.71107 18.625 6 18.625C7.28893 18.625 8.3 17.5419 8.3 16.25C8.3 14.9581 7.28893 13.875 6 13.875C4.71107 13.875 3.7 14.9581 3.7 16.25ZM15.7 16.25C15.7 17.5419 16.7111 18.625 18 18.625C19.2889 18.625 20.3 17.5419 20.3 16.25C20.3 14.9581 19.2889 13.875 18 13.875C16.7111 13.875 15.7 14.9581 15.7 16.25Z" stroke="var(--c_header_icon)"/>
+                              </svg>
+                            {% endif %}
+
+                            <span class="text-account-header">{{ settings.menu_rastreamento_text ? settings.menu_rastreamento_text : 'Rastrear Pedido' }}</span>
+                        </a>
+                    {% endif %}
+
+                    {% if settings.show_menu_atendimento %}
+                        <a class="header-atendimento" href="{{ links.contact }}" title="Atendimento">
+                            {% if settings.icon_menu_atendimento %}
+                                <img class="icone-menu" src="{{ asset(settings.icon_menu_atendimento) }}" alt="Ícone de atendimento">
+                            {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                    <path d="M20.5583 32V30.2878H29.25V28.7467H24.9333V20.2996H29.25V18.3591C29.25 16 28.4042 13.9691 26.7125 12.2663C25.0208 10.5636 22.9694 9.71225 20.5583 9.71225C18.1472 9.71225 16.0764 10.5636 14.3458 12.2663C12.6153 13.9691 11.75 16 11.75 18.3591V20.2996H16.0667V28.7467H11.75C11.2833 28.7467 10.875 28.5755 10.525 28.2331C10.175 27.8906 10 27.4911 10 27.0345V18.3591C10 16.9373 10.2771 15.5972 10.8313 14.3387C11.3854 13.0802 12.1389 11.9803 13.0917 11.0388C14.0444 10.0974 15.1645 9.35553 16.4518 8.81332C17.7391 8.27111 19.1099 8 20.5643 8C22.0187 8 23.3826 8.27111 24.6562 8.81332C25.9299 9.35553 27.0338 10.0974 27.9682 11.0388C28.9025 11.9803 29.6414 13.0802 30.1849 14.3387C30.7283 15.5972 31 16.9373 31 18.3591V30.2878C31 30.7444 30.825 31.1439 30.475 31.4863C30.125 31.8288 29.7167 32 29.25 32H20.5583ZM11.75 27.0345H14.3167V22.0119H11.75V27.0345ZM26.6833 27.0345H29.25V22.0119H26.6833V27.0345Z" fill="var(--c_header_icon)"/>
+                                </svg>
+                            {% endif %}
+
+                            <span class="text-account-header">{{ settings.menu_atendimento_text ? settings.menu_atendimento_text : 'Atendimento' }}</span>
+                        </a>
+                    {% endif %}
+                {% endif %}
+                
+                {% if settings.show_menu_perfil %}
+                    <div class="header-account">
+
+                        {% if settings.icon_menu_perfil %}
+                            <img class="icone-menu" src="{{ asset(settings.icon_menu_perfil) }}" alt="Ícone de perfil">
+                        {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M29 31V28.4444C29 27.0889 28.4582 25.7889 27.4937 24.8303C26.5292 23.8718 25.2211 23.3333 23.8571 23.3333H16.1429C14.7789 23.3333 13.4708 23.8718 12.5063 24.8303C11.5418 25.7889 11 27.0889 11 28.4444V31" stroke="var(--c_header_icon)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20 18.2222C22.8404 18.2222 25.1429 15.9339 25.1429 13.1111C25.1429 10.2883 22.8404 8 20 8C17.1597 8 14.8572 10.2883 14.8572 13.1111C14.8572 15.9339 17.1597 18.2222 20 18.2222Z" stroke="var(--c_header_icon)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        {% endif %}
+                        
+                        <div class="tray-hide logged" data-logged-user="true">
+                            {% if not utils.is_mobile %}
+                                <span class="account-text text-account-header">Ol&aacute;, <span data-customer="name"></span></span>
+                            {% endif %}
+                            <div class="account-access dropdown-acess">
+                                <a class="account-link fill-btn-account" href="{{ links.central }}" title="Minha Conta">Minha conta</a>
+                                <span class="account-separator">Sair da conta?</span>
+                                <a class="account-link border-btn-account" href="{{ links.logout }}" title="Sair">Sair</a>
+                                <a class="account-link border-btn-account" href="/my-account/orders">Meus Pedidos</a>
+                            </div>
+                            
+                        </div>
+                        <div class="tray-hide loggedout" data-logged-user="false">
+                            {% if not utils.is_mobile %}
+                                <span class="account-text text-account-header">
+                                    {{ settings.menu_perfil_text ? settings.menu_perfil_text : 'Minha Conta' }}
+                                </span>
+                            {% endif %}
+
+                            <div class="account-access dropdown-acess">
+                                <a class="account-link fill-btn-account" href="{{ links.login }}" title="Entrar">Entrar</a>
+                                <span class="account-separator">Cliente novo?</span>
+                                <a class="account-link border-btn-account" href="{{ links.register }}" title="Cadastrar">Cadastrar</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if settings.show_menu_cart %}
+                <div class="cart-header aside-cart">
+                    <a class="link-cart-modal" title="Carrinho">
+                    
+                        {% if settings.icon_menu_cart %}
+                            <div class="header-cart">
+                                <div class="cart-icon">
+                                    <img class="icone-menu" src="{{ asset(settings.icon_menu_cart) }}" alt="Ícone de cart">
+                                    <span id="cart-quantity" class="cart-quantity" data-cart="amount">0</span>
+                                </div>
+                            </div>
+                            
+                        {% else %}
+                            <div class="header-cart">
+                                <div class="cart-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                        <path d="M6.62245 22C6.06122 22 5.58418 21.8073 5.19133 21.4218C4.79847 21.0363 4.60204 20.5682 4.60204 20.0175C4.60204 19.4668 4.79847 18.9987 5.19133 18.6133C5.58418 18.2278 6.06122 18.035 6.62245 18.035C7.18367 18.035 7.66071 18.2278 8.05357 18.6133C8.44643 18.9987 8.64286 19.4668 8.64286 20.0175C8.64286 20.5682 8.44643 21.0363 8.05357 21.4218C7.66071 21.8073 7.18367 22 6.62245 22ZM17.8469 22C17.2857 22 16.8087 21.8073 16.4158 21.4218C16.023 21.0363 15.8265 20.5682 15.8265 20.0175C15.8265 19.4668 16.023 18.9987 16.4158 18.6133C16.8087 18.2278 17.2857 18.035 17.8469 18.035C18.4082 18.035 18.8852 18.2278 19.2781 18.6133C19.6709 18.9987 19.8673 19.4668 19.8673 20.0175C19.8673 20.5682 19.6709 21.0363 19.2781 21.4218C18.8852 21.8073 18.4082 22 17.8469 22ZM5.16327 3.82728L8.25 10.1051H16.3316L19.8393 3.82728H5.16327ZM4.32143 2.17522H20.8495C21.2798 2.17522 21.6071 2.36796 21.8316 2.75344C22.0561 3.13892 22.0561 3.52441 21.8316 3.90989L18.0434 10.6007C17.8376 10.9495 17.571 11.2295 17.2436 11.4405C16.9162 11.6516 16.5561 11.7572 16.1633 11.7572H7.66071L6.08929 14.6208H19.8673V16.2728H6.34184C5.55612 16.2728 4.99022 16.0159 4.64413 15.5019C4.29804 14.9879 4.30272 14.4097 4.65816 13.7672L6.45408 10.5181L2.18878 1.65206H0V0H3.28316L4.32143 2.17522Z" fill="var(--c_header_icon)"/>
+                                    </svg>
+                                    <span id="cart-quantity" class="cart-quantity" data-cart="amount">0</span>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if not utils.is_mobile %}
+                            <span class="text-account-header">{{ settings.menu_cart_text ? settings.menu_cart_text : 'Meu Carrinho' }}</span>
+                        {% endif %}
+                    </a>
+                    <div class="cart-sidebar flex flex-column">
+                        <div class="header-cart flex justify-between">
+                            Minha sacola
+                            <button id="btn-close-cart" class="justify-end">X</button>
+                        </div>
+                        <div class="content-cart flex-grow flex flex-column justify-between empty">
+                            <div class="list">
+                                <div class="error">
+                                    <div class="text">Sacola Vazia</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-cart">
+                            
+                            <div class="text-info flex align-center justify-end">
+                                <div class="total"><span>Total (valor sem frete):</span> <span class="value"></span></div>
+                            </div>
+                            <div class="text-info flex align-center justify-end" style="margin-bottom: 30px;">
+                                <div class="total"><span><a href="{{ links.cart }}" id="btn-fechar-pedido">FECHAR PEDIDO</a></span></div>
+                            </div>
+                            
+                
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-cart-header"></div>
+                {% endif %}
+
+            {% endif %}
+        </div>
+    </div>
+
+    {% if not settings.show_menu_small %}
+        <nav data-menu="scroll" class="header-menu menu-categ">
+            {% element 'snippets/menu' %}
+        </nav>
+    {% endif %}
+
+</header>

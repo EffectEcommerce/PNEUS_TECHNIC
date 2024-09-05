@@ -1,0 +1,772 @@
+// External styles from libs or packages
+@use 'swiper/swiper-bundle.min.css';
+
+/// Values Default
+$v_width_content_page: 1210px;
+$v_border_header: 1.5px solid var(--c_general_details);
+$v_border_titles: 2px solid var(--c_general_details);
+$v_border_sections: 1px solid var(--c_general_details);
+$v_border_select: 1px solid var(--c_general_details);
+$v_border_pages: 2px solid var(--c_general_main);
+$v_border_filter: 2px solid var(--c_general_details);
+$v_border_table: 2px solid var(--c_general_details);
+$v_border_wishlist: 2px solid var(--c_general_details);
+$v_shadow_default: 0 4px 5px #00000017;
+$v_margin_section_home_small_medium: 4rem 2rem 0 2rem;
+$v_margin_section_home_large: 4rem auto 0 auto;
+$v_width_filter: 18.57rem;
+$v_height_tags: 26px;
+$v_dimension_pagination: 2.9rem;
+
+/// Colors default
+$c_alert: #dd2e2e;
+$c_alert_bg: #ffebeb;
+$c_alert_sucess: #98bf11;
+$c_alert_sucess_bg: #b0d52d2b;
+
+/// fonts size:
+$fs_header: 0.9;
+$fs_header_primary: 0.92;
+$fs_menu: 1.1;
+$fs_menu_m: 1;
+$fs_menu_p: 0.89;
+$fs_search: 0.92;
+$fs_button: 0.92;
+$fs_footer_title: 1;
+$fs_footer_text: 0.9;
+
+/// transition opacity default:
+$transit_default: 0.2s ease-out;
+$transit_slow: 0.5s ease-out;
+
+%flex {
+    display: flex;
+}
+
+%flex-colun {
+    display: flex;
+    flex-direction: column;
+}
+
+%flex-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
+%flex-end-center {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+%flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+%flex-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%flex-center-start {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+%flex-end {
+    display: flex;
+    align-items: flex-end;
+}
+
+%flex-center-end {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+%flex-center-start-colun {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+%flex-start-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+%flex-betw {
+    display: flex;
+    justify-content: space-between;
+}
+
+%flex-betw-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+%flex-center-colun {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+%flex-betw-start {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+%flex-colun-betw {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+/// Resets CSS:
+@import 'resets/reset', 'resets/normalize', 'resets/typhography', 'resets/resets-tray';
+
+/// Inserir o parametro size em "rem"
+@mixin fontInsert($size: 1rem, $weight: 400, $textcolor: var(--c_general_text1), $transform: none) {
+    color: $textcolor;
+    font-family: $font_name;
+    font-size: $size * 1rem;
+    font-weight: $weight;
+    font-variant: normal;
+    text-transform: $transform;
+}
+
+/// Ready to use
+%style-scroll {
+    /// Firefox
+    scrollbar-width: thin;
+    scrollbar-color: var(--c_general_background) #f7f7f777;
+    transition: $transit_slow;
+
+    &:active {
+        scrollbar-color: var(--c_general_secondary) #f7f7f777;
+    }
+
+    /// Chrome, Edge, and Safari
+    /* width */
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #f7f7f777;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        border-radius: calc(10px - 3px);
+        background: var(--c_general_background);
+        transition: $transit_slow;
+
+        &:active {
+            background: var(--c_general_secondary);
+        }
+    }
+}
+
+%style-scroll-big {
+    /// Firefox
+    scrollbar-width: auto;
+    scrollbar-color: var(--c_general_background) #f7f7f777;
+    transition: $transit_slow;
+
+    &:active {
+        scrollbar-color: var(--c_general_secondary) #f7f7f777;
+    }
+
+    /// Chrome, Edge, and Safari
+    /* width */
+    &::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #f7f7f777;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        border-radius: calc(16px - 3px);
+        background: var(--c_general_background);
+        transition: $transit_slow;
+
+        &:active {
+            background: var(--c_general_secondary);
+        }
+    }
+}
+
+%select {
+    @include fontInsert(0.875, 600, var(--c_general_text2));
+    background-color: var(--c_general_inverted);
+    border: $v_border_select;
+    border-radius: 0.15rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+@mixin title-h1($border: $v_border_titles, $weight: 700) {
+    border-bottom: $border;
+
+    @include small {
+        @include fontInsert(1.5, $weight);
+    }
+    @include medium {
+        @include fontInsert(2, $weight);
+    }
+    @include large {
+        @include fontInsert(2, $weight);
+    }
+}
+
+%title-h2 {
+    @include fontInsert(1.85, 700);
+    border-bottom: $v_border_titles;
+}
+
+%subtitle-h2 {
+    @include fontInsert(1.5, 700, var(--c_general_text1));
+}
+
+@mixin title-h3($weight: 700) {
+    @include fontInsert(1.125, $weight, var(--c_general_text1));
+}
+
+%subtitle-h3 {
+    @include fontInsert(1, 700, var(--c_general_text1));
+}
+
+@mixin title-h4($weight: 400) {
+    @include small {
+        @include fontInsert(0.75, $weight, var(--c_general_text1));
+    }
+    @include medium {
+        @include fontInsert(0.97, $weight, var(--c_general_text1));
+    }
+    @include large {
+        @include fontInsert(1, $weight, var(--c_general_text1));
+    }
+}
+
+%title-menu-modal {
+    @include fontInsert(1.5, 700, var(--c_header_text_main));
+}
+
+%paragraph-text {
+    @include fontInsert(0.97, 400, var(--c_general_text2));
+}
+
+%paragraph-bold-text {
+    @include fontInsert(0.97, 600, var(--c_general_text2));
+}
+
+%paragraph-smallText {
+    @include fontInsert(0.75, 400, var(--c_general_text2));
+}
+
+%paragraph-mediumText {
+    @include fontInsert(0.875, 400, var(--c_general_text2));
+}
+
+%paragraph-bold-mediumText {
+    @include fontInsert(0.875, 600, var(--c_general_text2));
+}
+
+%text-general {
+    @include fontInsert(0.97, 400, var(--c_general_text1));
+}
+
+%text-bold-principal {
+    @include fontInsert(0.97, 600, var(--c_general_text1), uppercase);
+}
+
+@mixin link-bold {
+    @include fontInsert(1.2, 600, var(--c_general_text1), uppercase);
+    transition: $transit_default;
+
+    &:hover {
+        color: var(--c_general_main);
+    }
+}
+
+%modal-mobile-menus {
+    background-color: var(--c_general_inverted);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
+    border-radius: 0 0 0.5rem 0.5rem;
+    display: block;
+    max-width: 500px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+    height: 90%;
+}
+
+%button-pagination {
+    border-radius: 2px;
+    display: block;
+    line-height: $v_dimension_pagination;
+    opacity: 1;
+    text-align: center;
+    transition: $transit_default;
+    height: $v_dimension_pagination;
+    min-width: $v_dimension_pagination;
+}
+
+%loader-before {
+    animation: is-rotating 1s infinite;
+    content: '';
+    display: block;
+    border: 6px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: var(--c_general_secondary);
+    height: 2rem;
+    width: 2rem;
+}
+
+@mixin v-width-compare {
+    @include small {
+        width: 11rem;
+    }
+    @include medium {
+        width: 11rem;
+    }
+    @include large {
+        width: 17rem;
+    }
+}
+
+// Components Checkboxes
+@mixin externStyle-checkboxSquare($color-border: #00000057) {
+    background-color: #fff;
+    border: 0.15em solid $color-border;
+    border-radius: 0.15em;
+    color: currentColor;
+    height: 1.21rem;
+    width: 1.21rem;
+}
+
+%internalStyle-checkboxSquare {
+    background-color: var(--c_general_main);
+    height: 0.7rem;
+    width: 0.7rem;
+}
+
+@mixin externStyle-checkboxCircle($color-border: #00000057) {
+    background-color: #fff;
+    border: 0.15em solid $color-border;
+    border-radius: 50%;
+    color: currentColor;
+    height: 1.21rem;
+    width: 1.21rem;
+}
+
+%internalStyle-checkboxCircle {
+    background-color: var(--c_general_main);
+    border-radius: 50%;
+    height: 0.7rem;
+    width: 0.7rem;
+}
+
+@mixin checkbox-square($color-border: #00000057) {
+    input[type='checkbox'] {
+        @include externStyle-checkboxSquare($color-border);
+        display: inline-grid;
+        font: inherit;
+        margin: 0;
+        place-content: center;
+        transform: translateY(-0.075em);
+
+        &::before {
+            @extend %internalStyle-checkboxSquare;
+            content: '';
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+        }
+
+        &:checked::before {
+            transform: scale(1);
+        }
+    }
+}
+
+@mixin checkbox-circle($color-border: #00000057) {
+    input[type='radio'] {
+        @include externStyle-checkboxCircle($color-border);
+        display: inline-grid;
+        font: inherit;
+        place-content: center;
+        transform: translateY(-0.075em);
+
+        &::before {
+            @extend %internalStyle-checkboxCircle;
+            content: '';
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+        }
+
+        &:checked::before {
+            transform: scale(1);
+        }
+    }
+}
+
+///Media queries para Resposividade:
+@mixin small-p {
+    @media (max-width: 470px) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin medium-p {
+    @media (min-width: 768.1px) and (max-width: 900px) {
+        @content;
+    }
+}
+
+@mixin medium-m {
+    @media (min-width: 900.1px) and (max-width: 1000px) {
+        @content;
+    }
+}
+
+@mixin medium-g {
+    @media (min-width: 1000.1px) and (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media (min-width: 768.1px) and (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media (min-width: 1280.1px) {
+        @content;
+    }
+}
+
+// "Header" height settings for scroll
+@include small {
+    :root {
+        --v_height_header_top: 156px;
+        --v_height_header_menu: 0;
+        --v_height_header_total: var(--v_height_header_top);
+    }
+}
+
+@include medium {
+    :root {
+        --v_height_header_top: 84px;
+        --v_height_header_menu: 72px;
+        --v_height_header_total: calc(var(--v_height_header_top) + var(--v_height_header_menu));
+    }
+}
+
+@include large {
+    :root {
+        --v_height_header_top: 84px;
+        --v_height_header_menu: 72px;
+        --v_height_header_total: calc(var(--v_height_header_top) + var(--v_height_header_menu));
+    }
+}
+
+@keyframes disappearAndFall {
+    from {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-100% + var(--v_height_header_menu));
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+.u-effectHeader {
+    animation-name: disappearAndFall;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    transition: $transit_slow;
+}
+
+.u-shadow {
+    box-shadow: 0 4px 8px #0000002e;
+}
+
+/* Acessibility */
+/* *:focus:not(* input.search-input):not(* input[type='text']):not(* textarea):not(* input[type='email']):not(*
+        input[type='tel']) {
+    outline: 2px solid var(--c_general_secondary);
+    outline-offset: 0.15rem;
+} */
+
+body {
+    @extend %style-scroll-big;
+    height: 100vh;
+    width: 100%;
+    min-width: 360px;
+    font-family: $font_name;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--c_general_text1);
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    width: 100%;
+    max-width: $v_width_content_page;
+    margin: 0 auto;
+
+    @include small {
+        padding: 0 1.2rem;
+    }
+    @include medium {
+        padding: 0 1.2rem;
+    }
+    @include large {
+        padding: 0 0.938rem;
+    }
+}
+
+.tray-hide,
+.compare-hidden {
+    display: none;
+}
+
+// visibility and dimension utilities
+.is-hidden {
+    display: none;
+}
+
+.justify-between {
+    @extend %flex-betw-center;
+}
+
+.justify-center {
+    @extend %flex-center-center;
+}
+
+.u-mobile {
+    @include small {
+        display: block;
+    }
+
+    @include medium {
+        display: none;
+    }
+
+    @include large {
+        display: none;
+    }
+}
+
+.u-desktop {
+    @include small {
+        display: none;
+    }
+
+    @include medium {
+        display: block;
+    }
+
+    @include large {
+        display: block;
+    }
+}
+
+body.overflowed {
+    overflow: hidden;
+}
+
+/* Shadows */
+.overlayShadow {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 19;
+    opacity: 0;
+    visibility: hidden;
+    background-color: #000;
+    transition: ease-out 0.3s;
+
+    &.u-show {
+        opacity: 0.5;
+        visibility: visible;
+    }
+}
+
+/// Close button modal
+.close-box {
+    position: absolute;
+    top: 2.8125rem;
+    right: 3.625rem;
+    font-size: 1.125rem;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+
+    &:hover .icon {
+        transition: ease-in-out 0.5s;
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+/// Icons Style
+.icon {
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.8rem;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+/// components default
+.button1 {
+    @include fontInsert($fs_button, 600, var(--c_general_text_inverted), uppercase);
+    background-color: var(--c_contrast_and_button);
+    border-radius: 2px;
+    padding: 1rem 2rem;
+    opacity: 1;
+    transition: $transit_default;
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 0.6;
+    }
+}
+
+.button2 {
+    @include fontInsert(1, 700, var(--c_general_text_inverted), uppercase);
+    background-color: var(--c_general_main);
+    border-radius: 2px;
+    display: block;
+    padding: 1rem 2rem;
+    opacity: 1;
+    transition: $transit_default;
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 0.6;
+    }
+}
+
+.button3 {
+    @include fontInsert($fs_button, 600, var(--c_general_main));
+    background-color: var(--c_general_details);
+    display: block;
+    padding: 1rem 2rem;
+    opacity: 1;
+    transition: $transit_default;
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 0.6;
+    }
+}
+
+.button4 {
+    @include fontInsert($fs_button, 700, var(--c_general_main), uppercase);
+    background-color: transparent;
+    border: 0.125rem solid var(--c_general_main);
+    border-radius: 0.15rem;
+    padding: 1rem 2rem;
+    opacity: 1;
+    transition: $transit_default;
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 0.6;
+        color: var(--c_general_text_inverted);
+        background-color: var(--c_general_main);
+    }
+}
+
+span.error-block {
+    color: var(--c_alert_error);
+    font-weight: 600;
+    margin: 0.3rem 0;
+    transition: $transit_default;
+}
+
+p.error-block {
+    @include fontInsert(0.9, 600, var(--c_alert_error));
+    background-color: var(--c_alert_error_bg);
+    border-radius: 2px;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    transition: $transit_default;
+}
+
+div.Seguro {
+    display: none;
+}
+
+/// Responsiveness Videos
+.video {
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        padding-bottom: 56.25%;
+    }
+
+    iframe {
+        position: absolute;
+        display: block;
+        border: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+///Imports of SASS parts:
+@import 'elements/header', 'elements/regua-topo', 'elements/product-page', 'elements/catalog-page', 'elements/video-home', 'elements/noticias', 'elements/temporizador-promo', 'elements/vitrine-shorts', 'elements/instagram_btn','elements/top-categorias', 'elements/loja-fisica', 'elements/banner-unico', 'elements/banner-duplo', 'elements/banner-triplo', 'elements/product-showcase','elements/footer', 'elements/showcaseProduct','elements/modal-payment', 'elements/banner', 'default',
+    'elements/alert-store', 'pages/home', 'pages/tray/modals-general', 'elements/brands-list', 'elements/pagination',
+    'elements/breadcrumb', 'pages/catalog-search', 'elements/smartfilter', 'pages/tray/newsletter-confirmation',
+    'pages/tray/login', 'pages/tray/page-register', 'pages/tray/compare', 'pages/tray/custom', 'pages/pageProduct',
+    'elements/modals', 'pages/tray/customerReviews', 'pages/tray/advanced-search', 'pages/tray/all-news',
+    'pages/tray/news', 'pages/tray/contactUs.scss', 'pages/tray/rich-text-editor', 'pages/tray/wishlist/wishlist',
+    'pages/tray/wishlist/wishlist-nav', 'pages/tray/wishlist/wishlist-create', 'pages/tray/wishlist/wishlist-allLists',
+    'pages/tray/wishlist/wishlist-extractOfCommissions', 'pages/tray/wishlist/wishlist-rescueCommissions',
+    'pages/tray//wishlist/wishlist-list', 'pages/tray/wishlist/wishlist-orders', 'pages/tray/wishlist/wishlist-index',
+    'pages/tray/wishlist/wishlist-buildTheList', 'pages/tray/wishlist/wishlist-search',
+    'pages/tray/wishlist/wishlist-help', 'pages/tray/affiliates/affiliates-login',
+    'pages/tray/affiliates/affilliates-list';

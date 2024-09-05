@@ -1,0 +1,18 @@
+{% set extensionJs = minified ? '.min.js' : '.js' %} 
+
+{# Tray scripts #} 
+{{ tray.scripts }} 
+
+
+<script src="{{ asset('js/libs.min.js')    }}"></script>
+<script src="{{ asset('js/main' ~ extensionJs) }}"></script>
+<script src="{{ asset('js/regua-topo.min.js') }}"></script>
+<script src="{{ asset('js/menuMobile.min.js') }}"></script>
+<script src="{{ asset('js/header-animation.min.js') }}"></script>
+<script src="{{ asset('js/home-showcase.min.js') }}"></script>
+<script src="{{ asset('js/footer.min.js') }}"></script>
+<script src="{{ asset('js/loja-fisica.min.js') }}"></script>
+
+{{ html.script({ 
+    '0' : tray.paths.js ~ 'dist/application.min.js?' ~ utils.assets_version 
+}) }}

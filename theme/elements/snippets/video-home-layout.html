@@ -1,0 +1,10 @@
+<div class="video-content-home"{% if not settings.show_vitrine_shorts %}style="margin-top:60px;"{% endif %}>
+    <div class="title-container"><span class="separator-title"></span><h2>
+        {{ settings.titulo_video_youtube }}
+    </h2><span class="separator-title"></span></div>
+    <div class="video-wrapper-layout">
+        <iframe class="youtube-video-layout" width="560" height="315" data-src="{{ settings.url_video_home }}" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+</div>

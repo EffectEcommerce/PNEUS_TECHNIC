@@ -1,0 +1,45 @@
+.container-triplo-banner {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 16px; 
+    margin-top: 44px;
+    padding: 10px;
+    
+    .banner-large {
+        background-color: #f0f0f0;
+        
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .banners-small {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; 
+
+        
+        img{
+            height: 100%;
+            width: 100%;
+            border-radius: 8px;
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .container-triplo-banner {
+        flex-direction: column;
+    }
+
+    .banner-large, .banners-small {
+        flex-basis: 100%; 
+    }
+
+    .banner-small {
+        height: auto; 
+    }
+}

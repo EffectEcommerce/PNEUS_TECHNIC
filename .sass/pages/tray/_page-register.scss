@@ -1,0 +1,237 @@
+.page-register {
+    .board {
+        h1 {
+            @include title-h1;
+            margin: 0 0 1.25rem;
+        }
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        &:last-child {
+            p {
+                padding-bottom: 0.5rem;
+                a {
+                    font-weight: 600;
+                    color: var(--c_general_main);
+                    opacity: 1;
+                    transition: $transit_default;
+
+                    &:hover {
+                        opacity: 0.6;
+                    }
+                }
+            }
+        }
+    }
+
+    h2 {
+        @extend %subtitle-h2;
+        text-align: left;
+
+        + br {
+            display: none;
+        }
+
+        &.txt-dados-entrega {
+            padding-top: 1rem;
+        }
+    }
+
+    .obriga.red {
+        font-size: 0;
+
+        &::before {
+            content: '*';
+            font-size: 0.75rem;
+        }
+    }
+
+    .botao-commerce {
+        @extend .button2;
+        opacity: 1;
+        transition: $transit_default;
+
+        @include small {
+            width: 100%;
+        }
+        @include medium {
+            width: unset;
+        }
+        @include large {
+            width: unset;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            opacity: 0.6;
+        }
+    }
+
+    .Seguro {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .default-content {
+        margin-top: 2rem;
+
+        form {
+            @include fontInsert(0.9, 600, var(--c_general_text2));
+            background-color: var(--c_general_background);
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+
+            @include small {
+                padding: 1.2rem;
+            }
+
+            @include medium {
+                padding: 2.5rem;
+            }
+
+            @include large {
+                padding: 2.5rem;
+            }
+        }
+
+        div ~ label:nth-child(5n) {
+            display: flex;
+        }
+
+        @include checkbox-square(var(--c_general_text2));
+        input[type='checkbox'] {
+            margin-right: 0.5rem;
+            position: relative;
+            top: 2px;
+        }
+
+        fieldset {
+            border: 0;
+            margin: 20px auto 0;
+            padding: 0;
+            font-size: 0.75rem;
+            width: 100%;
+
+            #fisica {
+                padding-top: 1rem;
+            }
+
+            strong {
+                font-weight: 600;
+            }
+
+            label {
+                display: block;
+                margin: 5px 0 0;
+                font-size: 0.938rem;
+            }
+
+            input[type='tel'],
+            input[type='email'],
+            input[type='password'],
+            select,
+            input[type='text'] {
+                background-color: var(--c_general_inverted);
+                border-radius: 2px;
+                margin: 4px 0 0;
+                padding: 0 1rem;
+                transition: ease-in-out 0.3s;
+                height: 3rem;
+
+                &:focus {
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                }
+            }
+
+            input[size='50'],
+            input[size='40'],
+            input[size='10'],
+            input[size='20'],
+            input[size='14'],
+            input[size='4'],
+            input[size='30'] {
+                width: calc(100% - 2rem);
+                font-weight: 400;
+            }
+
+            #cobranca_estado,
+            #estado_cliente {
+                border: unset;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    #CadastroAbas {
+        margin-top: 2rem;
+        text-align: left;
+
+        ul {
+            @extend %flex-center;
+            border-bottom: $v_border_pages;
+        }
+
+        li {
+            display: inline-block;
+
+            &:first-child {
+                margin-right: 1.5rem;
+            }
+
+            a {
+                @include fontInsert(0.875, 600, var(--c_general_text1));
+                background-color: var(--c_general_details);
+                border-radius: 2px 2px 0 0;
+                display: inline-block;
+                text-align: center;
+                transition: ease-in-out 0.3s;
+                line-height: 40px;
+                opacity: 1;
+                text-transform: uppercase;
+                @include small {
+                    font-size: 0.7rem;
+                    width: 110px;
+                }
+                @include medium {
+                    width: 137px;
+                }
+                @include large {
+                    width: 137px;
+                }
+
+                &:hover,
+                &:focus,
+                &:active {
+                    opacity: 0.6;
+                }
+            }
+
+            &.aberta a {
+                background-color: var(--c_general_main);
+                font-weight: 700;
+                color: var(--c_general_text_inverted);
+                display: block;
+                opacity: 1;
+                transition: $transit_default;
+
+                &:hover,
+                &:focus {
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+}
+
+span#seguranca_senha {
+    display: block;
+    color: $c_alert;
+    padding-top: 0.5rem;
+}
+
+span.mensagensErro {
+    color: $c_alert;
+}

@@ -1,0 +1,54 @@
+.pageProduct#page-product{
+
+    #product-name.pageProduct-name{
+        color: var(--c_prod_title);
+    }
+
+    .tabs-nav .nav-link.active{
+        background-color: transparent;
+        border-bottom: 2px solid #000;
+    }
+
+    .tabs-nav .nav-link{
+        background-color: transparent;
+        color: #000;
+    }
+
+    #produto_preco{
+        .PrecoPrincipal{
+            #variacaoPreco, .currency{
+                color: var(--c_prod_price);
+            }
+        }
+    }
+
+    .pageProduct-buy{
+        #button-buy{
+            background-color: var(--bg_prod_btn_pag);
+            color: var(--c_prod_btn_pag);
+            border-radius: 8px;
+        }
+        #button-buy:hover{
+            opacity: 1;
+            background-color: var(--bg_prod_btn_pag_hover);
+        }
+
+        #quant{
+            border-radius: 8px;
+        }
+    }
+
+    .pageProduct-shipping{
+        .shipping-input{
+            background-color: var(--bg_prod_frete_input);
+            color: var(--c_prod_frete_input);
+            border-radius: 8px;
+        }
+
+        .shipping-submit{
+            background-color: var(--bg_prod_frete_btn);
+            color: var(--c_prod_frete_btn);
+            border-radius: 8px;
+        }
+    }
+}

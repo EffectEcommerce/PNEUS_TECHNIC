@@ -1,0 +1,92 @@
+
+{% element 'snippets/banner-line' { 'banner_id': 'home', 'banner_type': 'slides' } %} 
+{% element 'snippets/top-categorias' %}
+{% element 'home-showcase' { 
+    'title_showcase' : settings.showcase_title_text_1,
+    'rand' : settings.showcase_rand_products, 
+    'type' : settings.showcase_type_1, 
+    'quantity' : settings.showcase_quantity_1 
+} %} 
+
+{% if settings.show-brands %}
+    {% element 'snippets/brands-list' %} 
+{% endif %}
+
+{# {% element 'snippets/banner-triplo' %} #}
+
+{% element 'home-showcase' { 
+
+    'title_showcase' : settings.showcase_title_text_2,
+    'rand' : settings.showcase_rand_products, 
+    'type' : settings.showcase_type_2, 
+    'quantity' : settings.showcase_quantity_2 
+} %} 
+
+{# {% element 'snippets/banner-duplo' %} #}
+
+{% element 'home-showcase' { 
+
+    'title_showcase' : settings.showcase_title_text_3,
+    'rand' : settings.showcase_rand_products, 
+    'type' : settings.showcase_type_3, 
+    'quantity' : settings.showcase_quantity_3 
+} %} 
+
+{% element 'snippets/banner-unico' %}
+
+{% if settings.show_brand_car %}
+    {% element 'snippets/loja-fisica' %}
+{% endif %}
+
+{% element 'snippets/instagram_botao' %}
+
+{% if settings.show_vitrine_shorts %}
+    {% element 'snippets/vitrine-shorts' %}
+{% endif %}
+
+
+{% if settings.show_video_home_layout %}
+    {% element 'snippets/video-home-layout' %}
+{% endif %}
+
+{% for pages in pages.custom %} 
+    {% if pages.info == "depoimentos_de_clientes" and settings.show_reviews %}
+        <section class="section reviews" data-slides="reviews">
+            <h2 class="section-title">Depoimentos</h2>
+            <div class="reviews-container">
+                {% element 'CustomerReview.reviews' %}
+                <button class="reviews-button">
+                    <a class="button2" href="/depoimentos-de-clientes" title="Ver mais depoimentos" rel="next" target="_self">
+                        Ver mais depoimentos
+                    </a>
+                </button>
+            </div>
+        </section>
+    {% endif %} 
+{% endfor %} 
+{#  #}
+{% if settings.show_blog %}
+    {% for page in pages.custom %} 
+        {% if page.info == "noticias" %}
+            <section class="section news slide-has-dots">
+                <div class="section-header">
+                    <h2 class="section-title">Not&iacute;cias</h2>
+                </div>
+                <div id="news-container" class="news-container">
+                    <ul class="news-content"></ul>
+                    <button class="news-button">
+                        <a href="{{ page.url }}" class="button2" title="Ver mais notícias" rel="next" target="_self">
+                            Ler todas as notícias
+                        </a>
+                    </button>
+                </div>
+            </section>
+        {% endif %} 
+    {% endfor %} 
+{% endif %}
+
+
+{% element 'snippets/banner-line' { 'banner_id': 'bottom', 'banner_type': 'container' } %}
+
+
+
